@@ -1,0 +1,1328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Main xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> *  Licensed to the Apache Software Foundation (ASF) under one or more</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> *  contributor license agreements.  See the NOTICE file distributed with</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *  this work for additional information regarding copyright ownership.</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> *  The ASF licenses this file to You under the Apache License, Version 2.0</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> *  (the "License"); you may not use this file except in compliance with</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> *  the License.  You may obtain a copy of the License at</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *  Unless required by applicable law or agreed to in writing, software</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  distributed under the License is distributed on an "AS IS" BASIS,</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> *  See the License for the specific language governing permissions and</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> *  limitations under the License.</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">package</strong> org.apache.tools.ant;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> java.io.FileInputStream;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> java.io.FileOutputStream;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> java.io.IOException;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> java.io.InputStream;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> java.io.PrintStream;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> java.io.PrintWriter;
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> java.util.Arrays;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> java.util.Collections;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> java.util.Enumeration;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> java.util.HashMap;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> java.util.HashSet;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> java.util.Iterator;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <strong class="jxr_keyword">import</strong> java.util.Map.Entry;
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">import</strong> java.util.Properties;
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <strong class="jxr_keyword">import</strong> java.util.Set;
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <strong class="jxr_keyword">import</strong> java.util.Vector;
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <strong class="jxr_keyword">import</strong> org.apache.tools.ant.input.DefaultInputHandler;
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <strong class="jxr_keyword">import</strong> org.apache.tools.ant.input.InputHandler;
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <strong class="jxr_keyword">import</strong> org.apache.tools.ant.launch.AntMain;
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <strong class="jxr_keyword">import</strong> org.apache.tools.ant.listener.SilentLogger;
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <strong class="jxr_keyword">import</strong> org.apache.tools.ant.property.GetProperty;
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <strong class="jxr_keyword">import</strong> org.apache.tools.ant.property.ResolvePropertyMap;
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <strong class="jxr_keyword">import</strong> org.apache.tools.ant.util.ClasspathUtils;
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  <strong class="jxr_keyword">import</strong> org.apache.tools.ant.util.FileUtils;
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  <strong class="jxr_keyword">import</strong> org.apache.tools.ant.util.ProxySetup;
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment"> * Command line entry point into Ant. This class is entered via the</em>
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment"> * canonical `public static void main` entry point and reads the</em>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment"> * command line arguments. It then assembles and executes an Ant</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment"> * project.</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment"> * &lt;p&gt;</em>
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>  <em class="jxr_javadoccomment"> * If you integrating Ant into some other tool, this is not the class</em>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  <em class="jxr_javadoccomment"> * to use as an entry point. Please see the source code of this</em>
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  <em class="jxr_javadoccomment"> * class to see how it manipulates the Ant project classes.</em>
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> Main <strong class="jxr_keyword">implements</strong> AntMain {
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  <em class="jxr_javadoccomment">     * A Set of args that are handled by the launcher and should</em>
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>  <em class="jxr_javadoccomment">     * not be seen by Main.</em>
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Set&lt;String&gt; LAUNCH_COMMANDS = Collections
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>              .unmodifiableSet(<strong class="jxr_keyword">new</strong> HashSet&lt;String&gt;(Arrays.asList(<span class="jxr_string">"-lib"</span>, <span class="jxr_string">"-cp"</span>, <span class="jxr_string">"-noclasspath"</span>,
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>                      <span class="jxr_string">"--noclasspath"</span>, <span class="jxr_string">"-nouserlib"</span>, <span class="jxr_string">"-main"</span>)));
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>  
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>      <em class="jxr_javadoccomment">/** The default build file name. {@value} */</em>
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String DEFAULT_BUILD_FILENAME = <span class="jxr_string">"build.xml"</span>;
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>  
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>      <em class="jxr_javadoccomment">/** Our current message output status. Follows Project.MSG_XXX. */</em>
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> msgOutputLevel = Project.MSG_INFO;
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>      <em class="jxr_javadoccomment">/** File that we are using for configuration. */</em>
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>      <strong class="jxr_keyword">private</strong> File buildFile; <em class="jxr_comment">/* null */</em>
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>      <em class="jxr_javadoccomment">/** Stream to use for logging. */</em>
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> PrintStream out = System.out;
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>      <em class="jxr_javadoccomment">/** Stream that we are using for logging error messages. */</em>
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> PrintStream err = System.err;
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>  
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>      <em class="jxr_javadoccomment">/** The build targets. */</em>
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>      <strong class="jxr_keyword">private</strong> Vector&lt;String&gt; targets = <strong class="jxr_keyword">new</strong> Vector&lt;String&gt;();
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>      <em class="jxr_javadoccomment">/** Set of properties that can be used by tasks. */</em>
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">private</strong> Properties definedProps = <strong class="jxr_keyword">new</strong> Properties();
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>  
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>      <em class="jxr_javadoccomment">/** Names of classes to add as listeners to project. */</em>
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>      <strong class="jxr_keyword">private</strong> Vector&lt;String&gt; listeners = <strong class="jxr_keyword">new</strong> Vector&lt;String&gt;(1);
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>  
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>      <em class="jxr_javadoccomment">/** File names of property files to load on startup. */</em>
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>      <strong class="jxr_keyword">private</strong> Vector&lt;String&gt; propertyFiles = <strong class="jxr_keyword">new</strong> Vector&lt;String&gt;(1);
+<a class="jxr_linenumber" name="L100" href="#L100">100</a> 
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>     <em class="jxr_javadoccomment">/** Indicates whether this build is to support interactive input */</em>
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> allowInput = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L103" href="#L103">103</a> 
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>     <em class="jxr_javadoccomment">/** keep going mode */</em>
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> keepGoingMode = false;
+<a class="jxr_linenumber" name="L106" href="#L106">106</a> 
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L108" href="#L108">108</a> <em class="jxr_javadoccomment">     * The Ant logger class. There may be only one logger. It will have</em>
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> <em class="jxr_javadoccomment">     * the right to use the 'out' PrintStream. The class must implements the</em>
+<a class="jxr_linenumber" name="L110" href="#L110">110</a> <em class="jxr_javadoccomment">     * BuildLogger interface.</em>
+<a class="jxr_linenumber" name="L111" href="#L111">111</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>     <strong class="jxr_keyword">private</strong> String loggerClassname = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L113" href="#L113">113</a> 
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L115" href="#L115">115</a> <em class="jxr_javadoccomment">     * The Ant InputHandler class.  There may be only one input</em>
+<a class="jxr_linenumber" name="L116" href="#L116">116</a> <em class="jxr_javadoccomment">     * handler.</em>
+<a class="jxr_linenumber" name="L117" href="#L117">117</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>     <strong class="jxr_keyword">private</strong> String inputHandlerClassname = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L119" href="#L119">119</a> 
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L121" href="#L121">121</a> <em class="jxr_javadoccomment">     * Whether or not output to the log is to be unadorned.</em>
+<a class="jxr_linenumber" name="L122" href="#L122">122</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> emacsMode = false;
+<a class="jxr_linenumber" name="L124" href="#L124">124</a> 
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L126" href="#L126">126</a> <em class="jxr_javadoccomment">     * Whether or not log output should be reduced to the minimum</em>
+<a class="jxr_linenumber" name="L127" href="#L127">127</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> silent = false;
+<a class="jxr_linenumber" name="L129" href="#L129">129</a> 
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L131" href="#L131">131</a> <em class="jxr_javadoccomment">     * Whether or not this instance has successfully been</em>
+<a class="jxr_linenumber" name="L132" href="#L132">132</a> <em class="jxr_javadoccomment">     * constructed and is ready to run.</em>
+<a class="jxr_linenumber" name="L133" href="#L133">133</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> readyToRun = false;
+<a class="jxr_linenumber" name="L135" href="#L135">135</a> 
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> <em class="jxr_javadoccomment">     * Whether or not we should only parse and display the project help</em>
+<a class="jxr_linenumber" name="L138" href="#L138">138</a> <em class="jxr_javadoccomment">     * information.</em>
+<a class="jxr_linenumber" name="L139" href="#L139">139</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> projectHelp = false;
+<a class="jxr_linenumber" name="L141" href="#L141">141</a> 
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L143" href="#L143">143</a> <em class="jxr_javadoccomment">     * Whether or not a logfile is being used. This is used to</em>
+<a class="jxr_linenumber" name="L144" href="#L144">144</a> <em class="jxr_javadoccomment">     * check if the output streams must be closed.</em>
+<a class="jxr_linenumber" name="L145" href="#L145">145</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> isLogFileUsed = false;
+<a class="jxr_linenumber" name="L147" href="#L147">147</a> 
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L149" href="#L149">149</a> <em class="jxr_javadoccomment">     * optional thread priority</em>
+<a class="jxr_linenumber" name="L150" href="#L150">150</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>     <strong class="jxr_keyword">private</strong> Integer threadPriority = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L152" href="#L152">152</a> 
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L154" href="#L154">154</a> <em class="jxr_javadoccomment">     * proxy flag: default is false</em>
+<a class="jxr_linenumber" name="L155" href="#L155">155</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> proxy = false;
+<a class="jxr_linenumber" name="L157" href="#L157">157</a> 
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>     <strong class="jxr_keyword">private</strong> Map&lt;Class&lt;?&gt;, List&lt;String&gt;&gt; extraArguments = <strong class="jxr_keyword">new</strong> HashMap&lt;Class&lt;?&gt;, List&lt;String&gt;&gt;();
+<a class="jxr_linenumber" name="L159" href="#L159">159</a> 
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> GetProperty NOPROPERTIES = <strong class="jxr_keyword">new</strong> GetProperty(){
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>         <strong class="jxr_keyword">public</strong> Object getProperty(String aName) {
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>             <em class="jxr_comment">// No existing property takes precedence</em>
+<a class="jxr_linenumber" name="L163" href="#L163">163</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>         }};
+<a class="jxr_linenumber" name="L165" href="#L165">165</a> 
+<a class="jxr_linenumber" name="L166" href="#L166">166</a> 
+<a class="jxr_linenumber" name="L167" href="#L167">167</a> 
+<a class="jxr_linenumber" name="L168" href="#L168">168</a> 
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L170" href="#L170">170</a> <em class="jxr_javadoccomment">     * Prints the message of the Throwable if it (the message) is not</em>
+<a class="jxr_linenumber" name="L171" href="#L171">171</a> <em class="jxr_javadoccomment">     * &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L172" href="#L172">172</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L173" href="#L173">173</a> <em class="jxr_javadoccomment">     * @param t Throwable to print the message of.</em>
+<a class="jxr_linenumber" name="L174" href="#L174">174</a> <em class="jxr_javadoccomment">     *          Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L175" href="#L175">175</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> printMessage(Throwable t) {
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>         String message = t.getMessage();
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>         <strong class="jxr_keyword">if</strong> (message != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>             System.err.println(message);
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>         }
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>     }
+<a class="jxr_linenumber" name="L182" href="#L182">182</a> 
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L184" href="#L184">184</a> <em class="jxr_javadoccomment">     * Creates a new instance of this class using the</em>
+<a class="jxr_linenumber" name="L185" href="#L185">185</a> <em class="jxr_javadoccomment">     * arguments specified, gives it any extra user properties which have been</em>
+<a class="jxr_linenumber" name="L186" href="#L186">186</a> <em class="jxr_javadoccomment">     * specified, and then runs the build using the classloader provided.</em>
+<a class="jxr_linenumber" name="L187" href="#L187">187</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L188" href="#L188">188</a> <em class="jxr_javadoccomment">     * @param args Command line arguments. Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L189" href="#L189">189</a> <em class="jxr_javadoccomment">     * @param additionalUserProperties Any extra properties to use in this</em>
+<a class="jxr_linenumber" name="L190" href="#L190">190</a> <em class="jxr_javadoccomment">     *        build. May be &lt;code&gt;null&lt;/code&gt;, which is the equivalent to</em>
+<a class="jxr_linenumber" name="L191" href="#L191">191</a> <em class="jxr_javadoccomment">     *        passing in an empty set of properties.</em>
+<a class="jxr_linenumber" name="L192" href="#L192">192</a> <em class="jxr_javadoccomment">     * @param coreLoader Classloader used for core classes. May be</em>
+<a class="jxr_linenumber" name="L193" href="#L193">193</a> <em class="jxr_javadoccomment">     *        &lt;code&gt;null&lt;/code&gt; in which case the system classloader is used.</em>
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> start(String[] args, Properties additionalUserProperties,
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>                              ClassLoader coreLoader) {
+<a class="jxr_linenumber" name="L197" href="#L197">197</a>         Main m = <strong class="jxr_keyword">new</strong> Main();
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>         m.startAnt(args, additionalUserProperties, coreLoader);
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>     }
+<a class="jxr_linenumber" name="L200" href="#L200">200</a> 
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L202" href="#L202">202</a> <em class="jxr_javadoccomment">     * Start Ant</em>
+<a class="jxr_linenumber" name="L203" href="#L203">203</a> <em class="jxr_javadoccomment">     * @param args command line args</em>
+<a class="jxr_linenumber" name="L204" href="#L204">204</a> <em class="jxr_javadoccomment">     * @param additionalUserProperties properties to set beyond those that</em>
+<a class="jxr_linenumber" name="L205" href="#L205">205</a> <em class="jxr_javadoccomment">     *        may be specified on the args list</em>
+<a class="jxr_linenumber" name="L206" href="#L206">206</a> <em class="jxr_javadoccomment">     * @param coreLoader - not used</em>
+<a class="jxr_linenumber" name="L207" href="#L207">207</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L208" href="#L208">208</a> <em class="jxr_javadoccomment">     * @since Ant 1.6</em>
+<a class="jxr_linenumber" name="L209" href="#L209">209</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L210" href="#L210">210</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> startAnt(String[] args, Properties additionalUserProperties,
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>                          ClassLoader coreLoader) {
+<a class="jxr_linenumber" name="L212" href="#L212">212</a> 
+<a class="jxr_linenumber" name="L213" href="#L213">213</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>             processArgs(args);
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>         } <strong class="jxr_keyword">catch</strong> (Throwable exc) {
+<a class="jxr_linenumber" name="L216" href="#L216">216</a>             handleLogfile();
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>             printMessage(exc);
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>             exit(1);
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>             <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>         }
+<a class="jxr_linenumber" name="L221" href="#L221">221</a> 
+<a class="jxr_linenumber" name="L222" href="#L222">222</a>         <strong class="jxr_keyword">if</strong> (additionalUserProperties != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L223" href="#L223">223</a>             <strong class="jxr_keyword">for</strong> (Enumeration&lt;?&gt; e = additionalUserProperties.keys();
+<a class="jxr_linenumber" name="L224" href="#L224">224</a>                     e.hasMoreElements();) {
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>                 String key = (String) e.nextElement();
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>                 String property = additionalUserProperties.getProperty(key);
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>                 definedProps.put(key, property);
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>             }
+<a class="jxr_linenumber" name="L229" href="#L229">229</a>         }
+<a class="jxr_linenumber" name="L230" href="#L230">230</a> 
+<a class="jxr_linenumber" name="L231" href="#L231">231</a>         <em class="jxr_comment">// expect the worst</em>
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>         <strong class="jxr_keyword">int</strong> exitCode = 1;
+<a class="jxr_linenumber" name="L233" href="#L233">233</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>                 runBuild(coreLoader);
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>                 exitCode = 0;
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>             } <strong class="jxr_keyword">catch</strong> (ExitStatusException ese) {
+<a class="jxr_linenumber" name="L238" href="#L238">238</a>                 exitCode = ese.getStatus();
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>                 <strong class="jxr_keyword">if</strong> (exitCode != 0) {
+<a class="jxr_linenumber" name="L240" href="#L240">240</a>                     <strong class="jxr_keyword">throw</strong> ese;
+<a class="jxr_linenumber" name="L241" href="#L241">241</a>                 }
+<a class="jxr_linenumber" name="L242" href="#L242">242</a>             }
+<a class="jxr_linenumber" name="L243" href="#L243">243</a>         } <strong class="jxr_keyword">catch</strong> (BuildException be) {
+<a class="jxr_linenumber" name="L244" href="#L244">244</a>             <strong class="jxr_keyword">if</strong> (err != System.err) {
+<a class="jxr_linenumber" name="L245" href="#L245">245</a>                 printMessage(be);
+<a class="jxr_linenumber" name="L246" href="#L246">246</a>             }
+<a class="jxr_linenumber" name="L247" href="#L247">247</a>         } <strong class="jxr_keyword">catch</strong> (Throwable exc) {
+<a class="jxr_linenumber" name="L248" href="#L248">248</a>             exc.printStackTrace();
+<a class="jxr_linenumber" name="L249" href="#L249">249</a>             printMessage(exc);
+<a class="jxr_linenumber" name="L250" href="#L250">250</a>         } <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="L251" href="#L251">251</a>             handleLogfile();
+<a class="jxr_linenumber" name="L252" href="#L252">252</a>         }
+<a class="jxr_linenumber" name="L253" href="#L253">253</a>         exit(exitCode);
+<a class="jxr_linenumber" name="L254" href="#L254">254</a>     }
+<a class="jxr_linenumber" name="L255" href="#L255">255</a> 
+<a class="jxr_linenumber" name="L256" href="#L256">256</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L257" href="#L257">257</a> <em class="jxr_javadoccomment">     * This operation is expected to call {@link System#exit(int)}, which</em>
+<a class="jxr_linenumber" name="L258" href="#L258">258</a> <em class="jxr_javadoccomment">     * is what the base version does.</em>
+<a class="jxr_linenumber" name="L259" href="#L259">259</a> <em class="jxr_javadoccomment">     * However, it is possible to do something else.</em>
+<a class="jxr_linenumber" name="L260" href="#L260">260</a> <em class="jxr_javadoccomment">     * @param exitCode code to exit with</em>
+<a class="jxr_linenumber" name="L261" href="#L261">261</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L262" href="#L262">262</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> exit(<strong class="jxr_keyword">int</strong> exitCode) {
+<a class="jxr_linenumber" name="L263" href="#L263">263</a>         System.exit(exitCode);
+<a class="jxr_linenumber" name="L264" href="#L264">264</a>     }
+<a class="jxr_linenumber" name="L265" href="#L265">265</a> 
+<a class="jxr_linenumber" name="L266" href="#L266">266</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L267" href="#L267">267</a> <em class="jxr_javadoccomment">     * Close logfiles, if we have been writing to them.</em>
+<a class="jxr_linenumber" name="L268" href="#L268">268</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L269" href="#L269">269</a> <em class="jxr_javadoccomment">     * @since Ant 1.6</em>
+<a class="jxr_linenumber" name="L270" href="#L270">270</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L271" href="#L271">271</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> handleLogfile() {
+<a class="jxr_linenumber" name="L272" href="#L272">272</a>         <strong class="jxr_keyword">if</strong> (isLogFileUsed) {
+<a class="jxr_linenumber" name="L273" href="#L273">273</a>             FileUtils.close(out);
+<a class="jxr_linenumber" name="L274" href="#L274">274</a>             FileUtils.close(err);
+<a class="jxr_linenumber" name="L275" href="#L275">275</a>         }
+<a class="jxr_linenumber" name="L276" href="#L276">276</a>     }
+<a class="jxr_linenumber" name="L277" href="#L277">277</a> 
+<a class="jxr_linenumber" name="L278" href="#L278">278</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L279" href="#L279">279</a> <em class="jxr_javadoccomment">     * Command line entry point. This method kicks off the building</em>
+<a class="jxr_linenumber" name="L280" href="#L280">280</a> <em class="jxr_javadoccomment">     * of a project object and executes a build using either a given</em>
+<a class="jxr_linenumber" name="L281" href="#L281">281</a> <em class="jxr_javadoccomment">     * target or the default target.</em>
+<a class="jxr_linenumber" name="L282" href="#L282">282</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L283" href="#L283">283</a> <em class="jxr_javadoccomment">     * @param args Command line arguments. Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L284" href="#L284">284</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L285" href="#L285">285</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L286" href="#L286">286</a>         start(args, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L287" href="#L287">287</a>     }
+<a class="jxr_linenumber" name="L288" href="#L288">288</a> 
+<a class="jxr_linenumber" name="L289" href="#L289">289</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L290" href="#L290">290</a> <em class="jxr_javadoccomment">     * Constructor used when creating Main for later arg processing</em>
+<a class="jxr_linenumber" name="L291" href="#L291">291</a> <em class="jxr_javadoccomment">     * and startup</em>
+<a class="jxr_linenumber" name="L292" href="#L292">292</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L293" href="#L293">293</a>     <strong class="jxr_keyword">public</strong> Main() {
+<a class="jxr_linenumber" name="L294" href="#L294">294</a>     }
+<a class="jxr_linenumber" name="L295" href="#L295">295</a> 
+<a class="jxr_linenumber" name="L296" href="#L296">296</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L297" href="#L297">297</a> <em class="jxr_javadoccomment">     * Sole constructor, which parses and deals with command line</em>
+<a class="jxr_linenumber" name="L298" href="#L298">298</a> <em class="jxr_javadoccomment">     * arguments.</em>
+<a class="jxr_linenumber" name="L299" href="#L299">299</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L300" href="#L300">300</a> <em class="jxr_javadoccomment">     * @param args Command line arguments. Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L301" href="#L301">301</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L302" href="#L302">302</a> <em class="jxr_javadoccomment">     * @exception BuildException if the specified build file doesn't exist</em>
+<a class="jxr_linenumber" name="L303" href="#L303">303</a> <em class="jxr_javadoccomment">     *                           or is a directory.</em>
+<a class="jxr_linenumber" name="L304" href="#L304">304</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L305" href="#L305">305</a> <em class="jxr_javadoccomment">     * @deprecated since 1.6.x</em>
+<a class="jxr_linenumber" name="L306" href="#L306">306</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L307" href="#L307">307</a>     <strong class="jxr_keyword">protected</strong> Main(String[] args) <strong class="jxr_keyword">throws</strong> BuildException {
+<a class="jxr_linenumber" name="L308" href="#L308">308</a>         processArgs(args);
+<a class="jxr_linenumber" name="L309" href="#L309">309</a>     }
+<a class="jxr_linenumber" name="L310" href="#L310">310</a> 
+<a class="jxr_linenumber" name="L311" href="#L311">311</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L312" href="#L312">312</a> <em class="jxr_javadoccomment">     * Process command line arguments.</em>
+<a class="jxr_linenumber" name="L313" href="#L313">313</a> <em class="jxr_javadoccomment">     * When ant is started from Launcher, launcher-only arguments do not get</em>
+<a class="jxr_linenumber" name="L314" href="#L314">314</a> <em class="jxr_javadoccomment">     * passed through to this routine.</em>
+<a class="jxr_linenumber" name="L315" href="#L315">315</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L316" href="#L316">316</a> <em class="jxr_javadoccomment">     * @param args the command line arguments.</em>
+<a class="jxr_linenumber" name="L317" href="#L317">317</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L318" href="#L318">318</a> <em class="jxr_javadoccomment">     * @since Ant 1.6</em>
+<a class="jxr_linenumber" name="L319" href="#L319">319</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L320" href="#L320">320</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> processArgs(String[] args) {
+<a class="jxr_linenumber" name="L321" href="#L321">321</a>         String searchForThis = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L322" href="#L322">322</a>         <strong class="jxr_keyword">boolean</strong> searchForFile = false;
+<a class="jxr_linenumber" name="L323" href="#L323">323</a>         PrintStream logTo = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L324" href="#L324">324</a> 
+<a class="jxr_linenumber" name="L325" href="#L325">325</a>         <em class="jxr_comment">// cycle through given args</em>
+<a class="jxr_linenumber" name="L326" href="#L326">326</a> 
+<a class="jxr_linenumber" name="L327" href="#L327">327</a>         <strong class="jxr_keyword">boolean</strong> justPrintUsage = false;
+<a class="jxr_linenumber" name="L328" href="#L328">328</a>         <strong class="jxr_keyword">boolean</strong> justPrintVersion = false;
+<a class="jxr_linenumber" name="L329" href="#L329">329</a>         <strong class="jxr_keyword">boolean</strong> justPrintDiagnostics = false;
+<a class="jxr_linenumber" name="L330" href="#L330">330</a> 
+<a class="jxr_linenumber" name="L331" href="#L331">331</a>         ArgumentProcessorRegistry processorRegistry = ArgumentProcessorRegistry.getInstance();
+<a class="jxr_linenumber" name="L332" href="#L332">332</a>         
+<a class="jxr_linenumber" name="L333" href="#L333">333</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; args.length; i++) {
+<a class="jxr_linenumber" name="L334" href="#L334">334</a>             String arg = args[i];
+<a class="jxr_linenumber" name="L335" href="#L335">335</a> 
+<a class="jxr_linenumber" name="L336" href="#L336">336</a>             <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-help"</span>) || arg.equals(<span class="jxr_string">"-h"</span>)) {
+<a class="jxr_linenumber" name="L337" href="#L337">337</a>                 justPrintUsage = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L338" href="#L338">338</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-version"</span>)) {
+<a class="jxr_linenumber" name="L339" href="#L339">339</a>                 justPrintVersion = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L340" href="#L340">340</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-diagnostics"</span>)) {
+<a class="jxr_linenumber" name="L341" href="#L341">341</a>                 justPrintDiagnostics = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L342" href="#L342">342</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-quiet"</span>) || arg.equals(<span class="jxr_string">"-q"</span>)) {
+<a class="jxr_linenumber" name="L343" href="#L343">343</a>                 msgOutputLevel = Project.MSG_WARN;
+<a class="jxr_linenumber" name="L344" href="#L344">344</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-verbose"</span>) || arg.equals(<span class="jxr_string">"-v"</span>)) {
+<a class="jxr_linenumber" name="L345" href="#L345">345</a>                 msgOutputLevel = Project.MSG_VERBOSE;
+<a class="jxr_linenumber" name="L346" href="#L346">346</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-debug"</span>) || arg.equals(<span class="jxr_string">"-d"</span>)) {
+<a class="jxr_linenumber" name="L347" href="#L347">347</a>                 msgOutputLevel = Project.MSG_DEBUG;
+<a class="jxr_linenumber" name="L348" href="#L348">348</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-silent"</span>) || arg.equals(<span class="jxr_string">"-S"</span>)) {
+<a class="jxr_linenumber" name="L349" href="#L349">349</a>                 silent = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L350" href="#L350">350</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-noinput"</span>)) {
+<a class="jxr_linenumber" name="L351" href="#L351">351</a>                 allowInput = false;
+<a class="jxr_linenumber" name="L352" href="#L352">352</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-logfile"</span>) || arg.equals(<span class="jxr_string">"-l"</span>)) {
+<a class="jxr_linenumber" name="L353" href="#L353">353</a>                 <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L354" href="#L354">354</a>                     File logFile = <strong class="jxr_keyword">new</strong> File(args[i + 1]);
+<a class="jxr_linenumber" name="L355" href="#L355">355</a>                     i++;
+<a class="jxr_linenumber" name="L356" href="#L356">356</a>                     logTo = <strong class="jxr_keyword">new</strong> PrintStream(<strong class="jxr_keyword">new</strong> FileOutputStream(logFile));
+<a class="jxr_linenumber" name="L357" href="#L357">357</a>                     isLogFileUsed = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L358" href="#L358">358</a>                 } <strong class="jxr_keyword">catch</strong> (IOException ioe) {
+<a class="jxr_linenumber" name="L359" href="#L359">359</a>                     String msg = <span class="jxr_string">"Cannot write on the specified log file. "</span>
+<a class="jxr_linenumber" name="L360" href="#L360">360</a>                         + <span class="jxr_string">"Make sure the path exists and you have write "</span>
+<a class="jxr_linenumber" name="L361" href="#L361">361</a>                         + <span class="jxr_string">"permissions."</span>;
+<a class="jxr_linenumber" name="L362" href="#L362">362</a>                     <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(msg);
+<a class="jxr_linenumber" name="L363" href="#L363">363</a>                 } <strong class="jxr_keyword">catch</strong> (ArrayIndexOutOfBoundsException aioobe) {
+<a class="jxr_linenumber" name="L364" href="#L364">364</a>                     String msg = <span class="jxr_string">"You must specify a log file when "</span>
+<a class="jxr_linenumber" name="L365" href="#L365">365</a>                         + <span class="jxr_string">"using the -log argument"</span>;
+<a class="jxr_linenumber" name="L366" href="#L366">366</a>                     <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(msg);
+<a class="jxr_linenumber" name="L367" href="#L367">367</a>                 }
+<a class="jxr_linenumber" name="L368" href="#L368">368</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-buildfile"</span>) || arg.equals(<span class="jxr_string">"-file"</span>)
+<a class="jxr_linenumber" name="L369" href="#L369">369</a>                        || arg.equals(<span class="jxr_string">"-f"</span>)) {
+<a class="jxr_linenumber" name="L370" href="#L370">370</a>                 i = handleArgBuildFile(args, i);
+<a class="jxr_linenumber" name="L371" href="#L371">371</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-listener"</span>)) {
+<a class="jxr_linenumber" name="L372" href="#L372">372</a>                 i = handleArgListener(args, i);
+<a class="jxr_linenumber" name="L373" href="#L373">373</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.startsWith(<span class="jxr_string">"-D"</span>)) {
+<a class="jxr_linenumber" name="L374" href="#L374">374</a>                 i = handleArgDefine(args, i);
+<a class="jxr_linenumber" name="L375" href="#L375">375</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-logger"</span>)) {
+<a class="jxr_linenumber" name="L376" href="#L376">376</a>                 i = handleArgLogger(args, i);
+<a class="jxr_linenumber" name="L377" href="#L377">377</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-inputhandler"</span>)) {
+<a class="jxr_linenumber" name="L378" href="#L378">378</a>                 i = handleArgInputHandler(args, i);
+<a class="jxr_linenumber" name="L379" href="#L379">379</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-emacs"</span>) || arg.equals(<span class="jxr_string">"-e"</span>)) {
+<a class="jxr_linenumber" name="L380" href="#L380">380</a>                 emacsMode = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L381" href="#L381">381</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-projecthelp"</span>) || arg.equals(<span class="jxr_string">"-p"</span>)) {
+<a class="jxr_linenumber" name="L382" href="#L382">382</a>                 <em class="jxr_comment">// set the flag to display the targets and quit</em>
+<a class="jxr_linenumber" name="L383" href="#L383">383</a>                 projectHelp = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L384" href="#L384">384</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-find"</span>) || arg.equals(<span class="jxr_string">"-s"</span>)) {
+<a class="jxr_linenumber" name="L385" href="#L385">385</a>                 searchForFile = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L386" href="#L386">386</a>                 <em class="jxr_comment">// eat up next arg if present, default to build.xml</em>
+<a class="jxr_linenumber" name="L387" href="#L387">387</a>                 <strong class="jxr_keyword">if</strong> (i &lt; args.length - 1) {
+<a class="jxr_linenumber" name="L388" href="#L388">388</a>                     searchForThis = args[++i];
+<a class="jxr_linenumber" name="L389" href="#L389">389</a>                 }
+<a class="jxr_linenumber" name="L390" href="#L390">390</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.startsWith(<span class="jxr_string">"-propertyfile"</span>)) {
+<a class="jxr_linenumber" name="L391" href="#L391">391</a>                 i = handleArgPropertyFile(args, i);
+<a class="jxr_linenumber" name="L392" href="#L392">392</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-k"</span>) || arg.equals(<span class="jxr_string">"-keep-going"</span>)) {
+<a class="jxr_linenumber" name="L393" href="#L393">393</a>                 keepGoingMode = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L394" href="#L394">394</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-nice"</span>)) {
+<a class="jxr_linenumber" name="L395" href="#L395">395</a>                 i = handleArgNice(args, i);
+<a class="jxr_linenumber" name="L396" href="#L396">396</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (LAUNCH_COMMANDS.contains(arg)) {
+<a class="jxr_linenumber" name="L397" href="#L397">397</a>                 <em class="jxr_comment">//catch script/ant mismatch with a meaningful message</em>
+<a class="jxr_linenumber" name="L398" href="#L398">398</a>                 <em class="jxr_comment">//we could ignore it, but there are likely to be other</em>
+<a class="jxr_linenumber" name="L399" href="#L399">399</a>                 <em class="jxr_comment">//version problems, so we stamp down on the configuration now</em>
+<a class="jxr_linenumber" name="L400" href="#L400">400</a>                 String msg = <span class="jxr_string">"Ant's Main method is being handed "</span>
+<a class="jxr_linenumber" name="L401" href="#L401">401</a>                         + <span class="jxr_string">"an option "</span> + arg + <span class="jxr_string">" that is only for the launcher class."</span>
+<a class="jxr_linenumber" name="L402" href="#L402">402</a>                         + <span class="jxr_string">"\nThis can be caused by a version mismatch between "</span>
+<a class="jxr_linenumber" name="L403" href="#L403">403</a>                         + <span class="jxr_string">"the ant script/.bat file and Ant itself."</span>;
+<a class="jxr_linenumber" name="L404" href="#L404">404</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(msg);
+<a class="jxr_linenumber" name="L405" href="#L405">405</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.equals(<span class="jxr_string">"-autoproxy"</span>)) {
+<a class="jxr_linenumber" name="L406" href="#L406">406</a>                 proxy = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L407" href="#L407">407</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (arg.startsWith(<span class="jxr_string">"-"</span>)) {
+<a class="jxr_linenumber" name="L408" href="#L408">408</a>                 <strong class="jxr_keyword">boolean</strong> processed = false;
+<a class="jxr_linenumber" name="L409" href="#L409">409</a>                 <strong class="jxr_keyword">for</strong> (ArgumentProcessor processor : processorRegistry.getProcessors()) {
+<a class="jxr_linenumber" name="L410" href="#L410">410</a>                     <strong class="jxr_keyword">int</strong> newI = processor.readArguments(args, i);
+<a class="jxr_linenumber" name="L411" href="#L411">411</a>                     <strong class="jxr_keyword">if</strong> (newI != -1) {
+<a class="jxr_linenumber" name="L412" href="#L412">412</a>                         List&lt;String&gt; extraArgs = extraArguments.get(processor.getClass());
+<a class="jxr_linenumber" name="L413" href="#L413">413</a>                         <strong class="jxr_keyword">if</strong> (extraArgs == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L414" href="#L414">414</a>                             extraArgs = <strong class="jxr_keyword">new</strong> ArrayList&lt;String&gt;();
+<a class="jxr_linenumber" name="L415" href="#L415">415</a>                             extraArguments.put(processor.getClass(), extraArgs);
+<a class="jxr_linenumber" name="L416" href="#L416">416</a>                         }
+<a class="jxr_linenumber" name="L417" href="#L417">417</a>                         <strong class="jxr_keyword">for</strong> (; i &lt; newI &amp;&amp; i &lt; args.length; i++) {
+<a class="jxr_linenumber" name="L418" href="#L418">418</a>                             extraArgs.add(args[i]);
+<a class="jxr_linenumber" name="L419" href="#L419">419</a>                         }
+<a class="jxr_linenumber" name="L420" href="#L420">420</a>                         processed = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L421" href="#L421">421</a>                         <strong class="jxr_keyword">break</strong>;
+<a class="jxr_linenumber" name="L422" href="#L422">422</a>                     }
+<a class="jxr_linenumber" name="L423" href="#L423">423</a>                 }
+<a class="jxr_linenumber" name="L424" href="#L424">424</a>                 <strong class="jxr_keyword">if</strong> (!processed) {
+<a class="jxr_linenumber" name="L425" href="#L425">425</a>                     <em class="jxr_comment">// we don't have any more args to recognize!</em>
+<a class="jxr_linenumber" name="L426" href="#L426">426</a>                     String msg = <span class="jxr_string">"Unknown argument: "</span> + arg;
+<a class="jxr_linenumber" name="L427" href="#L427">427</a>                     System.err.println(msg);
+<a class="jxr_linenumber" name="L428" href="#L428">428</a>                     printUsage();
+<a class="jxr_linenumber" name="L429" href="#L429">429</a>                     <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">""</span>);
+<a class="jxr_linenumber" name="L430" href="#L430">430</a>                 }
+<a class="jxr_linenumber" name="L431" href="#L431">431</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L432" href="#L432">432</a>                 <em class="jxr_comment">// if it's no other arg, it may be the target</em>
+<a class="jxr_linenumber" name="L433" href="#L433">433</a>                 targets.addElement(arg);
+<a class="jxr_linenumber" name="L434" href="#L434">434</a>             }
+<a class="jxr_linenumber" name="L435" href="#L435">435</a>         }
+<a class="jxr_linenumber" name="L436" href="#L436">436</a> 
+<a class="jxr_linenumber" name="L437" href="#L437">437</a>         <strong class="jxr_keyword">if</strong> (msgOutputLevel &gt;= Project.MSG_VERBOSE || justPrintVersion) {
+<a class="jxr_linenumber" name="L438" href="#L438">438</a>             printVersion(msgOutputLevel);
+<a class="jxr_linenumber" name="L439" href="#L439">439</a>         }
+<a class="jxr_linenumber" name="L440" href="#L440">440</a> 
+<a class="jxr_linenumber" name="L441" href="#L441">441</a>         <strong class="jxr_keyword">if</strong> (justPrintUsage || justPrintVersion || justPrintDiagnostics) {
+<a class="jxr_linenumber" name="L442" href="#L442">442</a>             <strong class="jxr_keyword">if</strong> (justPrintUsage) {
+<a class="jxr_linenumber" name="L443" href="#L443">443</a>                 printUsage();
+<a class="jxr_linenumber" name="L444" href="#L444">444</a>             }
+<a class="jxr_linenumber" name="L445" href="#L445">445</a>             <strong class="jxr_keyword">if</strong> (justPrintDiagnostics) {
+<a class="jxr_linenumber" name="L446" href="#L446">446</a>                 Diagnostics.doReport(System.out, msgOutputLevel);
+<a class="jxr_linenumber" name="L447" href="#L447">447</a>             }
+<a class="jxr_linenumber" name="L448" href="#L448">448</a>             <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L449" href="#L449">449</a>         }
+<a class="jxr_linenumber" name="L450" href="#L450">450</a> 
+<a class="jxr_linenumber" name="L451" href="#L451">451</a>         <em class="jxr_comment">// if buildFile was not specified on the command line,</em>
+<a class="jxr_linenumber" name="L452" href="#L452">452</a>         <strong class="jxr_keyword">if</strong> (buildFile == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L453" href="#L453">453</a>             <em class="jxr_comment">// but -find then search for it</em>
+<a class="jxr_linenumber" name="L454" href="#L454">454</a>             <strong class="jxr_keyword">if</strong> (searchForFile) {
+<a class="jxr_linenumber" name="L455" href="#L455">455</a>                 <strong class="jxr_keyword">if</strong> (searchForThis != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L456" href="#L456">456</a>                     buildFile = findBuildFile(System.getProperty(<span class="jxr_string">"user.dir"</span>), searchForThis);
+<a class="jxr_linenumber" name="L457" href="#L457">457</a>                     <strong class="jxr_keyword">if</strong> (buildFile == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L458" href="#L458">458</a>                         <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"Could not locate a build file!"</span>);
+<a class="jxr_linenumber" name="L459" href="#L459">459</a>                     }
+<a class="jxr_linenumber" name="L460" href="#L460">460</a>                 } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L461" href="#L461">461</a>                     <em class="jxr_comment">// no search file specified: so search an existing default file</em>
+<a class="jxr_linenumber" name="L462" href="#L462">462</a>                     Iterator&lt;ProjectHelper&gt; it = ProjectHelperRepository.getInstance().getHelpers();
+<a class="jxr_linenumber" name="L463" href="#L463">463</a>                     <strong class="jxr_keyword">do</strong> {
+<a class="jxr_linenumber" name="L464" href="#L464">464</a>                         ProjectHelper helper = it.next();
+<a class="jxr_linenumber" name="L465" href="#L465">465</a>                         searchForThis = helper.getDefaultBuildFile();
+<a class="jxr_linenumber" name="L466" href="#L466">466</a>                         <strong class="jxr_keyword">if</strong> (msgOutputLevel &gt;= Project.MSG_VERBOSE) {
+<a class="jxr_linenumber" name="L467" href="#L467">467</a>                             System.out.println(<span class="jxr_string">"Searching the default build file: "</span> + searchForThis);
+<a class="jxr_linenumber" name="L468" href="#L468">468</a>                         }
+<a class="jxr_linenumber" name="L469" href="#L469">469</a>                         buildFile = findBuildFile(System.getProperty(<span class="jxr_string">"user.dir"</span>), searchForThis);
+<a class="jxr_linenumber" name="L470" href="#L470">470</a>                     } <strong class="jxr_keyword">while</strong> (buildFile == <strong class="jxr_keyword">null</strong> &amp;&amp; it.hasNext());
+<a class="jxr_linenumber" name="L471" href="#L471">471</a>                     <strong class="jxr_keyword">if</strong> (buildFile == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L472" href="#L472">472</a>                         <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"Could not locate a build file!"</span>);
+<a class="jxr_linenumber" name="L473" href="#L473">473</a>                     }
+<a class="jxr_linenumber" name="L474" href="#L474">474</a>                 }
+<a class="jxr_linenumber" name="L475" href="#L475">475</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L476" href="#L476">476</a>                 <em class="jxr_comment">// no build file specified: so search an existing default file</em>
+<a class="jxr_linenumber" name="L477" href="#L477">477</a>                 Iterator&lt;ProjectHelper&gt; it = ProjectHelperRepository.getInstance().getHelpers();
+<a class="jxr_linenumber" name="L478" href="#L478">478</a>                 <strong class="jxr_keyword">do</strong> {
+<a class="jxr_linenumber" name="L479" href="#L479">479</a>                     ProjectHelper helper = it.next();
+<a class="jxr_linenumber" name="L480" href="#L480">480</a>                     buildFile = <strong class="jxr_keyword">new</strong> File(helper.getDefaultBuildFile());
+<a class="jxr_linenumber" name="L481" href="#L481">481</a>                     <strong class="jxr_keyword">if</strong> (msgOutputLevel &gt;= Project.MSG_VERBOSE) {
+<a class="jxr_linenumber" name="L482" href="#L482">482</a>                         System.out.println(<span class="jxr_string">"Trying the default build file: "</span> + buildFile);
+<a class="jxr_linenumber" name="L483" href="#L483">483</a>                     }
+<a class="jxr_linenumber" name="L484" href="#L484">484</a>                 } <strong class="jxr_keyword">while</strong> (!buildFile.exists() &amp;&amp; it.hasNext());
+<a class="jxr_linenumber" name="L485" href="#L485">485</a>             }
+<a class="jxr_linenumber" name="L486" href="#L486">486</a>         }
+<a class="jxr_linenumber" name="L487" href="#L487">487</a> 
+<a class="jxr_linenumber" name="L488" href="#L488">488</a>         <em class="jxr_comment">// make sure buildfile exists</em>
+<a class="jxr_linenumber" name="L489" href="#L489">489</a>         <strong class="jxr_keyword">if</strong> (!buildFile.exists()) {
+<a class="jxr_linenumber" name="L490" href="#L490">490</a>             System.out.println(<span class="jxr_string">"Buildfile: "</span> + buildFile + <span class="jxr_string">" does not exist!"</span>);
+<a class="jxr_linenumber" name="L491" href="#L491">491</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"Build failed"</span>);
+<a class="jxr_linenumber" name="L492" href="#L492">492</a>         }
+<a class="jxr_linenumber" name="L493" href="#L493">493</a> 
+<a class="jxr_linenumber" name="L494" href="#L494">494</a>         <strong class="jxr_keyword">if</strong> (buildFile.isDirectory()) {
+<a class="jxr_linenumber" name="L495" href="#L495">495</a>             File whatYouMeant = <strong class="jxr_keyword">new</strong> File(buildFile, <span class="jxr_string">"build.xml"</span>);
+<a class="jxr_linenumber" name="L496" href="#L496">496</a>             <strong class="jxr_keyword">if</strong> (whatYouMeant.isFile()) {
+<a class="jxr_linenumber" name="L497" href="#L497">497</a>                 buildFile = whatYouMeant;
+<a class="jxr_linenumber" name="L498" href="#L498">498</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L499" href="#L499">499</a>                 System.out.println(<span class="jxr_string">"What? Buildfile: "</span> + buildFile + <span class="jxr_string">" is a dir!"</span>);
+<a class="jxr_linenumber" name="L500" href="#L500">500</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"Build failed"</span>);
+<a class="jxr_linenumber" name="L501" href="#L501">501</a>             }
+<a class="jxr_linenumber" name="L502" href="#L502">502</a>         }
+<a class="jxr_linenumber" name="L503" href="#L503">503</a> 
+<a class="jxr_linenumber" name="L504" href="#L504">504</a>         <em class="jxr_comment">// Normalize buildFile for re-import detection</em>
+<a class="jxr_linenumber" name="L505" href="#L505">505</a>         buildFile =
+<a class="jxr_linenumber" name="L506" href="#L506">506</a>             FileUtils.getFileUtils().normalize(buildFile.getAbsolutePath());
+<a class="jxr_linenumber" name="L507" href="#L507">507</a> 
+<a class="jxr_linenumber" name="L508" href="#L508">508</a>         <em class="jxr_comment">// Load the property files specified by -propertyfile</em>
+<a class="jxr_linenumber" name="L509" href="#L509">509</a>         loadPropertyFiles();
+<a class="jxr_linenumber" name="L510" href="#L510">510</a> 
+<a class="jxr_linenumber" name="L511" href="#L511">511</a>         <strong class="jxr_keyword">if</strong> (msgOutputLevel &gt;= Project.MSG_INFO) {
+<a class="jxr_linenumber" name="L512" href="#L512">512</a>             System.out.println(<span class="jxr_string">"Buildfile: "</span> + buildFile);
+<a class="jxr_linenumber" name="L513" href="#L513">513</a>         }
+<a class="jxr_linenumber" name="L514" href="#L514">514</a> 
+<a class="jxr_linenumber" name="L515" href="#L515">515</a>         <strong class="jxr_keyword">if</strong> (logTo != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L516" href="#L516">516</a>             out = logTo;
+<a class="jxr_linenumber" name="L517" href="#L517">517</a>             err = logTo;
+<a class="jxr_linenumber" name="L518" href="#L518">518</a>             System.setOut(out);
+<a class="jxr_linenumber" name="L519" href="#L519">519</a>             System.setErr(err);
+<a class="jxr_linenumber" name="L520" href="#L520">520</a>         }
+<a class="jxr_linenumber" name="L521" href="#L521">521</a>         readyToRun = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L522" href="#L522">522</a>     }
+<a class="jxr_linenumber" name="L523" href="#L523">523</a> 
+<a class="jxr_linenumber" name="L524" href="#L524">524</a>     <em class="jxr_comment">// --------------------------------------------------------</em>
+<a class="jxr_linenumber" name="L525" href="#L525">525</a>     <em class="jxr_comment">//    Methods for handling the command line arguments</em>
+<a class="jxr_linenumber" name="L526" href="#L526">526</a>     <em class="jxr_comment">// --------------------------------------------------------</em>
+<a class="jxr_linenumber" name="L527" href="#L527">527</a> 
+<a class="jxr_linenumber" name="L528" href="#L528">528</a>     <em class="jxr_javadoccomment">/** Handle the -buildfile, -file, -f argument */</em>
+<a class="jxr_linenumber" name="L529" href="#L529">529</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> handleArgBuildFile(String[] args, <strong class="jxr_keyword">int</strong> pos) {
+<a class="jxr_linenumber" name="L530" href="#L530">530</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L531" href="#L531">531</a>             buildFile = <strong class="jxr_keyword">new</strong> File(
+<a class="jxr_linenumber" name="L532" href="#L532">532</a>                 args[++pos].replace('/', File.separatorChar));
+<a class="jxr_linenumber" name="L533" href="#L533">533</a>         } <strong class="jxr_keyword">catch</strong> (ArrayIndexOutOfBoundsException aioobe) {
+<a class="jxr_linenumber" name="L534" href="#L534">534</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(
+<a class="jxr_linenumber" name="L535" href="#L535">535</a>                 <span class="jxr_string">"You must specify a buildfile when using the -buildfile argument"</span>);
+<a class="jxr_linenumber" name="L536" href="#L536">536</a>         }
+<a class="jxr_linenumber" name="L537" href="#L537">537</a>         <strong class="jxr_keyword">return</strong> pos;
+<a class="jxr_linenumber" name="L538" href="#L538">538</a>     }
+<a class="jxr_linenumber" name="L539" href="#L539">539</a> 
+<a class="jxr_linenumber" name="L540" href="#L540">540</a>     <em class="jxr_javadoccomment">/** Handle -listener argument */</em>
+<a class="jxr_linenumber" name="L541" href="#L541">541</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> handleArgListener(String[] args, <strong class="jxr_keyword">int</strong> pos) {
+<a class="jxr_linenumber" name="L542" href="#L542">542</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L543" href="#L543">543</a>             listeners.addElement(args[pos + 1]);
+<a class="jxr_linenumber" name="L544" href="#L544">544</a>             pos++;
+<a class="jxr_linenumber" name="L545" href="#L545">545</a>         } <strong class="jxr_keyword">catch</strong> (ArrayIndexOutOfBoundsException aioobe) {
+<a class="jxr_linenumber" name="L546" href="#L546">546</a>             String msg = <span class="jxr_string">"You must specify a classname when "</span>
+<a class="jxr_linenumber" name="L547" href="#L547">547</a>                 + <span class="jxr_string">"using the -listener argument"</span>;
+<a class="jxr_linenumber" name="L548" href="#L548">548</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(msg);
+<a class="jxr_linenumber" name="L549" href="#L549">549</a>         }
+<a class="jxr_linenumber" name="L550" href="#L550">550</a>         <strong class="jxr_keyword">return</strong> pos;
+<a class="jxr_linenumber" name="L551" href="#L551">551</a>     }
+<a class="jxr_linenumber" name="L552" href="#L552">552</a> 
+<a class="jxr_linenumber" name="L553" href="#L553">553</a>     <em class="jxr_javadoccomment">/** Handler -D argument */</em>
+<a class="jxr_linenumber" name="L554" href="#L554">554</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> handleArgDefine(String[] args, <strong class="jxr_keyword">int</strong> argPos) {
+<a class="jxr_linenumber" name="L555" href="#L555">555</a>         <em class="jxr_comment">/* Interestingly enough, we get to here when a user</em>
+<a class="jxr_linenumber" name="L556" href="#L556">556</a> <em class="jxr_comment">         * uses -Dname=value. However, in some cases, the OS</em>
+<a class="jxr_linenumber" name="L557" href="#L557">557</a> <em class="jxr_comment">         * goes ahead and parses this out to args</em>
+<a class="jxr_linenumber" name="L558" href="#L558">558</a> <em class="jxr_comment">         *   {"-Dname", "value"}</em>
+<a class="jxr_linenumber" name="L559" href="#L559">559</a> <em class="jxr_comment">         * so instead of parsing on "=", we just make the "-D"</em>
+<a class="jxr_linenumber" name="L560" href="#L560">560</a> <em class="jxr_comment">         * characters go away and skip one argument forward.</em>
+<a class="jxr_linenumber" name="L561" href="#L561">561</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L562" href="#L562">562</a> <em class="jxr_comment">         * I don't know how to predict when the JDK is going</em>
+<a class="jxr_linenumber" name="L563" href="#L563">563</a> <em class="jxr_comment">         * to help or not, so we simply look for the equals sign.</em>
+<a class="jxr_linenumber" name="L564" href="#L564">564</a> <em class="jxr_comment">         */</em>
+<a class="jxr_linenumber" name="L565" href="#L565">565</a>         String arg = args[argPos];
+<a class="jxr_linenumber" name="L566" href="#L566">566</a>         String name = arg.substring(2, arg.length());
+<a class="jxr_linenumber" name="L567" href="#L567">567</a>         String value = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L568" href="#L568">568</a>         <strong class="jxr_keyword">int</strong> posEq = name.indexOf(<span class="jxr_string">"="</span>);
+<a class="jxr_linenumber" name="L569" href="#L569">569</a>         <strong class="jxr_keyword">if</strong> (posEq &gt; 0) {
+<a class="jxr_linenumber" name="L570" href="#L570">570</a>             value = name.substring(posEq + 1);
+<a class="jxr_linenumber" name="L571" href="#L571">571</a>             name = name.substring(0, posEq);
+<a class="jxr_linenumber" name="L572" href="#L572">572</a>         } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (argPos &lt; args.length - 1) {
+<a class="jxr_linenumber" name="L573" href="#L573">573</a>             value = args[++argPos];
+<a class="jxr_linenumber" name="L574" href="#L574">574</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L575" href="#L575">575</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"Missing value for property "</span>
+<a class="jxr_linenumber" name="L576" href="#L576">576</a>                                      + name);
+<a class="jxr_linenumber" name="L577" href="#L577">577</a>         }
+<a class="jxr_linenumber" name="L578" href="#L578">578</a>         definedProps.put(name, value);
+<a class="jxr_linenumber" name="L579" href="#L579">579</a>         <strong class="jxr_keyword">return</strong> argPos;
+<a class="jxr_linenumber" name="L580" href="#L580">580</a>     }
+<a class="jxr_linenumber" name="L581" href="#L581">581</a> 
+<a class="jxr_linenumber" name="L582" href="#L582">582</a>     <em class="jxr_javadoccomment">/** Handle the -logger argument. */</em>
+<a class="jxr_linenumber" name="L583" href="#L583">583</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> handleArgLogger(String[] args, <strong class="jxr_keyword">int</strong> pos) {
+<a class="jxr_linenumber" name="L584" href="#L584">584</a>         <strong class="jxr_keyword">if</strong> (loggerClassname != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L585" href="#L585">585</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(
+<a class="jxr_linenumber" name="L586" href="#L586">586</a>                 <span class="jxr_string">"Only one logger class may be specified."</span>);
+<a class="jxr_linenumber" name="L587" href="#L587">587</a>         }
+<a class="jxr_linenumber" name="L588" href="#L588">588</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L589" href="#L589">589</a>             loggerClassname = args[++pos];
+<a class="jxr_linenumber" name="L590" href="#L590">590</a>         } <strong class="jxr_keyword">catch</strong> (ArrayIndexOutOfBoundsException aioobe) {
+<a class="jxr_linenumber" name="L591" href="#L591">591</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(
+<a class="jxr_linenumber" name="L592" href="#L592">592</a>                 <span class="jxr_string">"You must specify a classname when using the -logger argument"</span>);
+<a class="jxr_linenumber" name="L593" href="#L593">593</a>         }
+<a class="jxr_linenumber" name="L594" href="#L594">594</a>         <strong class="jxr_keyword">return</strong> pos;
+<a class="jxr_linenumber" name="L595" href="#L595">595</a>     }
+<a class="jxr_linenumber" name="L596" href="#L596">596</a> 
+<a class="jxr_linenumber" name="L597" href="#L597">597</a>     <em class="jxr_javadoccomment">/** Handle the -inputhandler argument. */</em>
+<a class="jxr_linenumber" name="L598" href="#L598">598</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> handleArgInputHandler(String[] args, <strong class="jxr_keyword">int</strong> pos) {
+<a class="jxr_linenumber" name="L599" href="#L599">599</a>         <strong class="jxr_keyword">if</strong> (inputHandlerClassname != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L600" href="#L600">600</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"Only one input handler class may "</span>
+<a class="jxr_linenumber" name="L601" href="#L601">601</a>                                      + <span class="jxr_string">"be specified."</span>);
+<a class="jxr_linenumber" name="L602" href="#L602">602</a>         }
+<a class="jxr_linenumber" name="L603" href="#L603">603</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L604" href="#L604">604</a>             inputHandlerClassname = args[++pos];
+<a class="jxr_linenumber" name="L605" href="#L605">605</a>         } <strong class="jxr_keyword">catch</strong> (ArrayIndexOutOfBoundsException aioobe) {
+<a class="jxr_linenumber" name="L606" href="#L606">606</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"You must specify a classname when"</span>
+<a class="jxr_linenumber" name="L607" href="#L607">607</a>                                      + <span class="jxr_string">" using the -inputhandler"</span>
+<a class="jxr_linenumber" name="L608" href="#L608">608</a>                                      + <span class="jxr_string">" argument"</span>);
+<a class="jxr_linenumber" name="L609" href="#L609">609</a>         }
+<a class="jxr_linenumber" name="L610" href="#L610">610</a>         <strong class="jxr_keyword">return</strong> pos;
+<a class="jxr_linenumber" name="L611" href="#L611">611</a>     }
+<a class="jxr_linenumber" name="L612" href="#L612">612</a> 
+<a class="jxr_linenumber" name="L613" href="#L613">613</a>     <em class="jxr_javadoccomment">/** Handle the -propertyfile argument. */</em>
+<a class="jxr_linenumber" name="L614" href="#L614">614</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> handleArgPropertyFile(String[] args, <strong class="jxr_keyword">int</strong> pos) {
+<a class="jxr_linenumber" name="L615" href="#L615">615</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L616" href="#L616">616</a>             propertyFiles.addElement(args[++pos]);
+<a class="jxr_linenumber" name="L617" href="#L617">617</a>         } <strong class="jxr_keyword">catch</strong> (ArrayIndexOutOfBoundsException aioobe) {
+<a class="jxr_linenumber" name="L618" href="#L618">618</a>             String msg = <span class="jxr_string">"You must specify a property filename when "</span>
+<a class="jxr_linenumber" name="L619" href="#L619">619</a>                 + <span class="jxr_string">"using the -propertyfile argument"</span>;
+<a class="jxr_linenumber" name="L620" href="#L620">620</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(msg);
+<a class="jxr_linenumber" name="L621" href="#L621">621</a>         }
+<a class="jxr_linenumber" name="L622" href="#L622">622</a>         <strong class="jxr_keyword">return</strong> pos;
+<a class="jxr_linenumber" name="L623" href="#L623">623</a>     }
+<a class="jxr_linenumber" name="L624" href="#L624">624</a> 
+<a class="jxr_linenumber" name="L625" href="#L625">625</a>     <em class="jxr_javadoccomment">/** Handle the -nice argument. */</em>
+<a class="jxr_linenumber" name="L626" href="#L626">626</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> handleArgNice(String[] args, <strong class="jxr_keyword">int</strong> pos) {
+<a class="jxr_linenumber" name="L627" href="#L627">627</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L628" href="#L628">628</a>             threadPriority = Integer.decode(args[++pos]);
+<a class="jxr_linenumber" name="L629" href="#L629">629</a>         } <strong class="jxr_keyword">catch</strong> (ArrayIndexOutOfBoundsException aioobe) {
+<a class="jxr_linenumber" name="L630" href="#L630">630</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(
+<a class="jxr_linenumber" name="L631" href="#L631">631</a>                 <span class="jxr_string">"You must supply a niceness value (1-10)"</span>
+<a class="jxr_linenumber" name="L632" href="#L632">632</a>                 + <span class="jxr_string">" after the -nice option"</span>);
+<a class="jxr_linenumber" name="L633" href="#L633">633</a>         } <strong class="jxr_keyword">catch</strong> (NumberFormatException e) {
+<a class="jxr_linenumber" name="L634" href="#L634">634</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"Unrecognized niceness value: "</span>
+<a class="jxr_linenumber" name="L635" href="#L635">635</a>                                      + args[pos]);
+<a class="jxr_linenumber" name="L636" href="#L636">636</a>         }
+<a class="jxr_linenumber" name="L637" href="#L637">637</a> 
+<a class="jxr_linenumber" name="L638" href="#L638">638</a>         <strong class="jxr_keyword">if</strong> (threadPriority.intValue() &lt; Thread.MIN_PRIORITY
+<a class="jxr_linenumber" name="L639" href="#L639">639</a>             || threadPriority.intValue() &gt; Thread.MAX_PRIORITY) {
+<a class="jxr_linenumber" name="L640" href="#L640">640</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(
+<a class="jxr_linenumber" name="L641" href="#L641">641</a>                 <span class="jxr_string">"Niceness value is out of the range 1-10"</span>);
+<a class="jxr_linenumber" name="L642" href="#L642">642</a>         }
+<a class="jxr_linenumber" name="L643" href="#L643">643</a>         <strong class="jxr_keyword">return</strong> pos;
+<a class="jxr_linenumber" name="L644" href="#L644">644</a>     }
+<a class="jxr_linenumber" name="L645" href="#L645">645</a> 
+<a class="jxr_linenumber" name="L646" href="#L646">646</a>     <em class="jxr_comment">// --------------------------------------------------------</em>
+<a class="jxr_linenumber" name="L647" href="#L647">647</a>     <em class="jxr_comment">//    other methods</em>
+<a class="jxr_linenumber" name="L648" href="#L648">648</a>     <em class="jxr_comment">// --------------------------------------------------------</em>
+<a class="jxr_linenumber" name="L649" href="#L649">649</a> 
+<a class="jxr_linenumber" name="L650" href="#L650">650</a>     <em class="jxr_javadoccomment">/** Load the property files specified by -propertyfile */</em>
+<a class="jxr_linenumber" name="L651" href="#L651">651</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> loadPropertyFiles() {
+<a class="jxr_linenumber" name="L652" href="#L652">652</a>         <strong class="jxr_keyword">for</strong> (String filename : propertyFiles) {
+<a class="jxr_linenumber" name="L653" href="#L653">653</a>             Properties props = <strong class="jxr_keyword">new</strong> Properties();
+<a class="jxr_linenumber" name="L654" href="#L654">654</a>             FileInputStream fis = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L655" href="#L655">655</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L656" href="#L656">656</a>                 fis = <strong class="jxr_keyword">new</strong> FileInputStream(filename);
+<a class="jxr_linenumber" name="L657" href="#L657">657</a>                 props.load(fis);
+<a class="jxr_linenumber" name="L658" href="#L658">658</a>             } <strong class="jxr_keyword">catch</strong> (IOException e) {
+<a class="jxr_linenumber" name="L659" href="#L659">659</a>                 System.out.println(<span class="jxr_string">"Could not load property file "</span>
+<a class="jxr_linenumber" name="L660" href="#L660">660</a>                                    + filename + <span class="jxr_string">": "</span> + e.getMessage());
+<a class="jxr_linenumber" name="L661" href="#L661">661</a>             } <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="L662" href="#L662">662</a>                 FileUtils.close(fis);
+<a class="jxr_linenumber" name="L663" href="#L663">663</a>             }
+<a class="jxr_linenumber" name="L664" href="#L664">664</a> 
+<a class="jxr_linenumber" name="L665" href="#L665">665</a>             <em class="jxr_comment">// ensure that -D properties take precedence</em>
+<a class="jxr_linenumber" name="L666" href="#L666">666</a>             Enumeration&lt;?&gt; propertyNames = props.propertyNames();
+<a class="jxr_linenumber" name="L667" href="#L667">667</a>             <strong class="jxr_keyword">while</strong> (propertyNames.hasMoreElements()) {
+<a class="jxr_linenumber" name="L668" href="#L668">668</a>                 String name = (String) propertyNames.nextElement();
+<a class="jxr_linenumber" name="L669" href="#L669">669</a>                 <strong class="jxr_keyword">if</strong> (definedProps.getProperty(name) == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L670" href="#L670">670</a>                     definedProps.put(name, props.getProperty(name));
+<a class="jxr_linenumber" name="L671" href="#L671">671</a>                 }
+<a class="jxr_linenumber" name="L672" href="#L672">672</a>             }
+<a class="jxr_linenumber" name="L673" href="#L673">673</a>         }
+<a class="jxr_linenumber" name="L674" href="#L674">674</a>     }
+<a class="jxr_linenumber" name="L675" href="#L675">675</a> 
+<a class="jxr_linenumber" name="L676" href="#L676">676</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L677" href="#L677">677</a> <em class="jxr_javadoccomment">     * Helper to get the parent file for a given file.</em>
+<a class="jxr_linenumber" name="L678" href="#L678">678</a> <em class="jxr_javadoccomment">     * &lt;p&gt;</em>
+<a class="jxr_linenumber" name="L679" href="#L679">679</a> <em class="jxr_javadoccomment">     * Added to simulate File.getParentFile() from JDK 1.2.</em>
+<a class="jxr_linenumber" name="L680" href="#L680">680</a> <em class="jxr_javadoccomment">     * @deprecated since 1.6.x</em>
+<a class="jxr_linenumber" name="L681" href="#L681">681</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L682" href="#L682">682</a> <em class="jxr_javadoccomment">     * @param file   File to find parent of. Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L683" href="#L683">683</a> <em class="jxr_javadoccomment">     * @return       Parent file or null if none</em>
+<a class="jxr_linenumber" name="L684" href="#L684">684</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L685" href="#L685">685</a>     <strong class="jxr_keyword">private</strong> File getParentFile(File file) {
+<a class="jxr_linenumber" name="L686" href="#L686">686</a>         File parent = file.getParentFile();
+<a class="jxr_linenumber" name="L687" href="#L687">687</a> 
+<a class="jxr_linenumber" name="L688" href="#L688">688</a>         <strong class="jxr_keyword">if</strong> (parent != <strong class="jxr_keyword">null</strong> &amp;&amp; msgOutputLevel &gt;= Project.MSG_VERBOSE) {
+<a class="jxr_linenumber" name="L689" href="#L689">689</a>             System.out.println(<span class="jxr_string">"Searching in "</span> + parent.getAbsolutePath());
+<a class="jxr_linenumber" name="L690" href="#L690">690</a>         }
+<a class="jxr_linenumber" name="L691" href="#L691">691</a> 
+<a class="jxr_linenumber" name="L692" href="#L692">692</a>         <strong class="jxr_keyword">return</strong> parent;
+<a class="jxr_linenumber" name="L693" href="#L693">693</a>     }
+<a class="jxr_linenumber" name="L694" href="#L694">694</a> 
+<a class="jxr_linenumber" name="L695" href="#L695">695</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L696" href="#L696">696</a> <em class="jxr_javadoccomment">     * Search parent directories for the build file.</em>
+<a class="jxr_linenumber" name="L697" href="#L697">697</a> <em class="jxr_javadoccomment">     * &lt;p&gt;</em>
+<a class="jxr_linenumber" name="L698" href="#L698">698</a> <em class="jxr_javadoccomment">     * Takes the given target as a suffix to append to each</em>
+<a class="jxr_linenumber" name="L699" href="#L699">699</a> <em class="jxr_javadoccomment">     * parent directory in search of a build file.  Once the</em>
+<a class="jxr_linenumber" name="L700" href="#L700">700</a> <em class="jxr_javadoccomment">     * root of the file-system has been reached &lt;code&gt;null&lt;/code&gt;</em>
+<a class="jxr_linenumber" name="L701" href="#L701">701</a> <em class="jxr_javadoccomment">     * is returned.</em>
+<a class="jxr_linenumber" name="L702" href="#L702">702</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L703" href="#L703">703</a> <em class="jxr_javadoccomment">     * @param start  Leaf directory of search.</em>
+<a class="jxr_linenumber" name="L704" href="#L704">704</a> <em class="jxr_javadoccomment">     *               Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L705" href="#L705">705</a> <em class="jxr_javadoccomment">     * @param suffix  Suffix filename to look for in parents.</em>
+<a class="jxr_linenumber" name="L706" href="#L706">706</a> <em class="jxr_javadoccomment">     *                Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L707" href="#L707">707</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L708" href="#L708">708</a> <em class="jxr_javadoccomment">     * @return A handle to the build file if one is found, &lt;code&gt;null&lt;/code&gt; if not</em>
+<a class="jxr_linenumber" name="L709" href="#L709">709</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L710" href="#L710">710</a>     <strong class="jxr_keyword">private</strong> File findBuildFile(String start, String suffix) {
+<a class="jxr_linenumber" name="L711" href="#L711">711</a>         <strong class="jxr_keyword">if</strong> (msgOutputLevel &gt;= Project.MSG_INFO) {
+<a class="jxr_linenumber" name="L712" href="#L712">712</a>             System.out.println(<span class="jxr_string">"Searching for "</span> + suffix + <span class="jxr_string">" ..."</span>);
+<a class="jxr_linenumber" name="L713" href="#L713">713</a>         }
+<a class="jxr_linenumber" name="L714" href="#L714">714</a> 
+<a class="jxr_linenumber" name="L715" href="#L715">715</a>         File parent = <strong class="jxr_keyword">new</strong> File(<strong class="jxr_keyword">new</strong> File(start).getAbsolutePath());
+<a class="jxr_linenumber" name="L716" href="#L716">716</a>         File file = <strong class="jxr_keyword">new</strong> File(parent, suffix);
+<a class="jxr_linenumber" name="L717" href="#L717">717</a> 
+<a class="jxr_linenumber" name="L718" href="#L718">718</a>         <em class="jxr_comment">// check if the target file exists in the current directory</em>
+<a class="jxr_linenumber" name="L719" href="#L719">719</a>         <strong class="jxr_keyword">while</strong> (!file.exists()) {
+<a class="jxr_linenumber" name="L720" href="#L720">720</a>             <em class="jxr_comment">// change to parent directory</em>
+<a class="jxr_linenumber" name="L721" href="#L721">721</a>             parent = getParentFile(parent);
+<a class="jxr_linenumber" name="L722" href="#L722">722</a> 
+<a class="jxr_linenumber" name="L723" href="#L723">723</a>             <em class="jxr_comment">// if parent is null, then we are at the root of the fs,</em>
+<a class="jxr_linenumber" name="L724" href="#L724">724</a>             <em class="jxr_comment">// complain that we can't find the build file.</em>
+<a class="jxr_linenumber" name="L725" href="#L725">725</a>             <strong class="jxr_keyword">if</strong> (parent == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L726" href="#L726">726</a>                 <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L727" href="#L727">727</a>             }
+<a class="jxr_linenumber" name="L728" href="#L728">728</a> 
+<a class="jxr_linenumber" name="L729" href="#L729">729</a>             <em class="jxr_comment">// refresh our file handle</em>
+<a class="jxr_linenumber" name="L730" href="#L730">730</a>             file = <strong class="jxr_keyword">new</strong> File(parent, suffix);
+<a class="jxr_linenumber" name="L731" href="#L731">731</a>         }
+<a class="jxr_linenumber" name="L732" href="#L732">732</a> 
+<a class="jxr_linenumber" name="L733" href="#L733">733</a>         <strong class="jxr_keyword">return</strong> file;
+<a class="jxr_linenumber" name="L734" href="#L734">734</a>     }
+<a class="jxr_linenumber" name="L735" href="#L735">735</a> 
+<a class="jxr_linenumber" name="L736" href="#L736">736</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L737" href="#L737">737</a> <em class="jxr_javadoccomment">     * Executes the build. If the constructor for this instance failed</em>
+<a class="jxr_linenumber" name="L738" href="#L738">738</a> <em class="jxr_javadoccomment">     * (e.g. returned after issuing a warning), this method returns</em>
+<a class="jxr_linenumber" name="L739" href="#L739">739</a> <em class="jxr_javadoccomment">     * immediately.</em>
+<a class="jxr_linenumber" name="L740" href="#L740">740</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L741" href="#L741">741</a> <em class="jxr_javadoccomment">     * @param coreLoader The classloader to use to find core classes.</em>
+<a class="jxr_linenumber" name="L742" href="#L742">742</a> <em class="jxr_javadoccomment">     *                   May be &lt;code&gt;null&lt;/code&gt;, in which case the</em>
+<a class="jxr_linenumber" name="L743" href="#L743">743</a> <em class="jxr_javadoccomment">     *                   system classloader is used.</em>
+<a class="jxr_linenumber" name="L744" href="#L744">744</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L745" href="#L745">745</a> <em class="jxr_javadoccomment">     * @exception BuildException if the build fails</em>
+<a class="jxr_linenumber" name="L746" href="#L746">746</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L747" href="#L747">747</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> runBuild(ClassLoader coreLoader) <strong class="jxr_keyword">throws</strong> BuildException {
+<a class="jxr_linenumber" name="L748" href="#L748">748</a> 
+<a class="jxr_linenumber" name="L749" href="#L749">749</a>         <strong class="jxr_keyword">if</strong> (!readyToRun) {
+<a class="jxr_linenumber" name="L750" href="#L750">750</a>             <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L751" href="#L751">751</a>         }
+<a class="jxr_linenumber" name="L752" href="#L752">752</a> 
+<a class="jxr_linenumber" name="L753" href="#L753">753</a>         ArgumentProcessorRegistry processorRegistry = ArgumentProcessorRegistry.getInstance();
+<a class="jxr_linenumber" name="L754" href="#L754">754</a> 
+<a class="jxr_linenumber" name="L755" href="#L755">755</a>         <strong class="jxr_keyword">for</strong> (ArgumentProcessor processor : processorRegistry.getProcessors()) {
+<a class="jxr_linenumber" name="L756" href="#L756">756</a>             List&lt;String&gt; extraArgs = extraArguments.get(processor.getClass());
+<a class="jxr_linenumber" name="L757" href="#L757">757</a>             <strong class="jxr_keyword">if</strong> (extraArgs != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L758" href="#L758">758</a>                 <strong class="jxr_keyword">if</strong> (processor.handleArg(extraArgs)) {
+<a class="jxr_linenumber" name="L759" href="#L759">759</a>                     <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L760" href="#L760">760</a>                 }
+<a class="jxr_linenumber" name="L761" href="#L761">761</a>             }
+<a class="jxr_linenumber" name="L762" href="#L762">762</a>         }
+<a class="jxr_linenumber" name="L763" href="#L763">763</a> 
+<a class="jxr_linenumber" name="L764" href="#L764">764</a>         <strong class="jxr_keyword">final</strong> Project project = <strong class="jxr_keyword">new</strong> Project();
+<a class="jxr_linenumber" name="L765" href="#L765">765</a>         project.setCoreLoader(coreLoader);
+<a class="jxr_linenumber" name="L766" href="#L766">766</a> 
+<a class="jxr_linenumber" name="L767" href="#L767">767</a>         Throwable error = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L768" href="#L768">768</a> 
+<a class="jxr_linenumber" name="L769" href="#L769">769</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L770" href="#L770">770</a>             addBuildListeners(project);
+<a class="jxr_linenumber" name="L771" href="#L771">771</a>             addInputHandler(project);
+<a class="jxr_linenumber" name="L772" href="#L772">772</a> 
+<a class="jxr_linenumber" name="L773" href="#L773">773</a>             PrintStream savedErr = System.err;
+<a class="jxr_linenumber" name="L774" href="#L774">774</a>             PrintStream savedOut = System.out;
+<a class="jxr_linenumber" name="L775" href="#L775">775</a>             InputStream savedIn = System.in;
+<a class="jxr_linenumber" name="L776" href="#L776">776</a> 
+<a class="jxr_linenumber" name="L777" href="#L777">777</a>             <em class="jxr_comment">// use a system manager that prevents from System.exit()</em>
+<a class="jxr_linenumber" name="L778" href="#L778">778</a>             SecurityManager oldsm = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L779" href="#L779">779</a>             oldsm = System.getSecurityManager();
+<a class="jxr_linenumber" name="L780" href="#L780">780</a> 
+<a class="jxr_linenumber" name="L781" href="#L781">781</a>                 <em class="jxr_comment">//SecurityManager can not be installed here for backwards</em>
+<a class="jxr_linenumber" name="L782" href="#L782">782</a>                 <em class="jxr_comment">//compatibility reasons (PD). Needs to be loaded prior to</em>
+<a class="jxr_linenumber" name="L783" href="#L783">783</a>                 <em class="jxr_comment">//ant class if we are going to implement it.</em>
+<a class="jxr_linenumber" name="L784" href="#L784">784</a>                 <em class="jxr_comment">//System.setSecurityManager(new NoExitSecurityManager());</em>
+<a class="jxr_linenumber" name="L785" href="#L785">785</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L786" href="#L786">786</a>                 <strong class="jxr_keyword">if</strong> (allowInput) {
+<a class="jxr_linenumber" name="L787" href="#L787">787</a>                     project.setDefaultInputStream(System.in);
+<a class="jxr_linenumber" name="L788" href="#L788">788</a>                 }
+<a class="jxr_linenumber" name="L789" href="#L789">789</a>                 System.setIn(<strong class="jxr_keyword">new</strong> DemuxInputStream(project));
+<a class="jxr_linenumber" name="L790" href="#L790">790</a>                 System.setOut(<strong class="jxr_keyword">new</strong> PrintStream(<strong class="jxr_keyword">new</strong> DemuxOutputStream(project, false)));
+<a class="jxr_linenumber" name="L791" href="#L791">791</a>                 System.setErr(<strong class="jxr_keyword">new</strong> PrintStream(<strong class="jxr_keyword">new</strong> DemuxOutputStream(project, <strong class="jxr_keyword">true</strong>)));
+<a class="jxr_linenumber" name="L792" href="#L792">792</a> 
+<a class="jxr_linenumber" name="L793" href="#L793">793</a> 
+<a class="jxr_linenumber" name="L794" href="#L794">794</a>                 <strong class="jxr_keyword">if</strong> (!projectHelp) {
+<a class="jxr_linenumber" name="L795" href="#L795">795</a>                     project.fireBuildStarted();
+<a class="jxr_linenumber" name="L796" href="#L796">796</a>                 }
+<a class="jxr_linenumber" name="L797" href="#L797">797</a> 
+<a class="jxr_linenumber" name="L798" href="#L798">798</a>                 <em class="jxr_comment">// set the thread priorities</em>
+<a class="jxr_linenumber" name="L799" href="#L799">799</a>                 <strong class="jxr_keyword">if</strong> (threadPriority != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L800" href="#L800">800</a>                     <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L801" href="#L801">801</a>                         project.log(<span class="jxr_string">"Setting Ant's thread priority to "</span>
+<a class="jxr_linenumber" name="L802" href="#L802">802</a>                                 + threadPriority, Project.MSG_VERBOSE);
+<a class="jxr_linenumber" name="L803" href="#L803">803</a>                         Thread.currentThread().setPriority(threadPriority.intValue());
+<a class="jxr_linenumber" name="L804" href="#L804">804</a>                     } <strong class="jxr_keyword">catch</strong> (SecurityException swallowed) {
+<a class="jxr_linenumber" name="L805" href="#L805">805</a>                         <em class="jxr_comment">//we cannot set the priority here.</em>
+<a class="jxr_linenumber" name="L806" href="#L806">806</a>                         project.log(<span class="jxr_string">"A security manager refused to set the -nice value"</span>);
+<a class="jxr_linenumber" name="L807" href="#L807">807</a>                     }
+<a class="jxr_linenumber" name="L808" href="#L808">808</a>                 }
+<a class="jxr_linenumber" name="L809" href="#L809">809</a> 
+<a class="jxr_linenumber" name="L810" href="#L810">810</a>                 setProperties(project);
+<a class="jxr_linenumber" name="L811" href="#L811">811</a> 
+<a class="jxr_linenumber" name="L812" href="#L812">812</a>                 project.setKeepGoingMode(keepGoingMode);
+<a class="jxr_linenumber" name="L813" href="#L813">813</a>                 <strong class="jxr_keyword">if</strong> (proxy) {
+<a class="jxr_linenumber" name="L814" href="#L814">814</a>                     <em class="jxr_comment">//proxy setup if enabled</em>
+<a class="jxr_linenumber" name="L815" href="#L815">815</a>                     ProxySetup proxySetup = <strong class="jxr_keyword">new</strong> ProxySetup(project);
+<a class="jxr_linenumber" name="L816" href="#L816">816</a>                     proxySetup.enableProxies();
+<a class="jxr_linenumber" name="L817" href="#L817">817</a>                 }
+<a class="jxr_linenumber" name="L818" href="#L818">818</a> 
+<a class="jxr_linenumber" name="L819" href="#L819">819</a>                 <strong class="jxr_keyword">for</strong> (ArgumentProcessor processor : processorRegistry.getProcessors()) {
+<a class="jxr_linenumber" name="L820" href="#L820">820</a>                     List&lt;String&gt; extraArgs = extraArguments.get(processor.getClass());
+<a class="jxr_linenumber" name="L821" href="#L821">821</a>                     <strong class="jxr_keyword">if</strong> (extraArgs != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L822" href="#L822">822</a>                         processor.prepareConfigure(project, extraArgs);
+<a class="jxr_linenumber" name="L823" href="#L823">823</a>                     }
+<a class="jxr_linenumber" name="L824" href="#L824">824</a>                 }
+<a class="jxr_linenumber" name="L825" href="#L825">825</a> 
+<a class="jxr_linenumber" name="L826" href="#L826">826</a>                 ProjectHelper.configureProject(project, buildFile);
+<a class="jxr_linenumber" name="L827" href="#L827">827</a> 
+<a class="jxr_linenumber" name="L828" href="#L828">828</a>                 <strong class="jxr_keyword">for</strong> (ArgumentProcessor processor : processorRegistry.getProcessors()) {
+<a class="jxr_linenumber" name="L829" href="#L829">829</a>                     List&lt;String&gt; extraArgs = extraArguments.get(processor.getClass());
+<a class="jxr_linenumber" name="L830" href="#L830">830</a>                     <strong class="jxr_keyword">if</strong> (extraArgs != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L831" href="#L831">831</a>                         <strong class="jxr_keyword">if</strong> (processor.handleArg(project, extraArgs)) {
+<a class="jxr_linenumber" name="L832" href="#L832">832</a>                             <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L833" href="#L833">833</a>                         }
+<a class="jxr_linenumber" name="L834" href="#L834">834</a>                     }
+<a class="jxr_linenumber" name="L835" href="#L835">835</a>                 }
+<a class="jxr_linenumber" name="L836" href="#L836">836</a> 
+<a class="jxr_linenumber" name="L837" href="#L837">837</a>                 <strong class="jxr_keyword">if</strong> (projectHelp) {
+<a class="jxr_linenumber" name="L838" href="#L838">838</a>                     printDescription(project);
+<a class="jxr_linenumber" name="L839" href="#L839">839</a>                     printTargets(project, msgOutputLevel &gt; Project.MSG_INFO,
+<a class="jxr_linenumber" name="L840" href="#L840">840</a>                             msgOutputLevel &gt; Project.MSG_VERBOSE);
+<a class="jxr_linenumber" name="L841" href="#L841">841</a>                     <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L842" href="#L842">842</a>                 }
+<a class="jxr_linenumber" name="L843" href="#L843">843</a> 
+<a class="jxr_linenumber" name="L844" href="#L844">844</a>                 <em class="jxr_comment">// make sure that we have a target to execute</em>
+<a class="jxr_linenumber" name="L845" href="#L845">845</a>                 <strong class="jxr_keyword">if</strong> (targets.size() == 0) {
+<a class="jxr_linenumber" name="L846" href="#L846">846</a>                     <strong class="jxr_keyword">if</strong> (project.getDefaultTarget() != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L847" href="#L847">847</a>                         targets.addElement(project.getDefaultTarget());
+<a class="jxr_linenumber" name="L848" href="#L848">848</a>                     }
+<a class="jxr_linenumber" name="L849" href="#L849">849</a>                 }
+<a class="jxr_linenumber" name="L850" href="#L850">850</a> 
+<a class="jxr_linenumber" name="L851" href="#L851">851</a>                 project.executeTargets(targets);
+<a class="jxr_linenumber" name="L852" href="#L852">852</a>             } <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="L853" href="#L853">853</a>                 <em class="jxr_comment">// put back the original security manager</em>
+<a class="jxr_linenumber" name="L854" href="#L854">854</a>                 <em class="jxr_comment">//The following will never eval to true. (PD)</em>
+<a class="jxr_linenumber" name="L855" href="#L855">855</a>                 <strong class="jxr_keyword">if</strong> (oldsm != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L856" href="#L856">856</a>                     System.setSecurityManager(oldsm);
+<a class="jxr_linenumber" name="L857" href="#L857">857</a>                 }
+<a class="jxr_linenumber" name="L858" href="#L858">858</a> 
+<a class="jxr_linenumber" name="L859" href="#L859">859</a>                 System.setOut(savedOut);
+<a class="jxr_linenumber" name="L860" href="#L860">860</a>                 System.setErr(savedErr);
+<a class="jxr_linenumber" name="L861" href="#L861">861</a>                 System.setIn(savedIn);
+<a class="jxr_linenumber" name="L862" href="#L862">862</a>             }
+<a class="jxr_linenumber" name="L863" href="#L863">863</a>         } <strong class="jxr_keyword">catch</strong> (RuntimeException exc) {
+<a class="jxr_linenumber" name="L864" href="#L864">864</a>             error = exc;
+<a class="jxr_linenumber" name="L865" href="#L865">865</a>             <strong class="jxr_keyword">throw</strong> exc;
+<a class="jxr_linenumber" name="L866" href="#L866">866</a>         } <strong class="jxr_keyword">catch</strong> (Error e) {
+<a class="jxr_linenumber" name="L867" href="#L867">867</a>             error = e;
+<a class="jxr_linenumber" name="L868" href="#L868">868</a>             <strong class="jxr_keyword">throw</strong> e;
+<a class="jxr_linenumber" name="L869" href="#L869">869</a>         } <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="L870" href="#L870">870</a>             <strong class="jxr_keyword">if</strong> (!projectHelp) {
+<a class="jxr_linenumber" name="L871" href="#L871">871</a>                 <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L872" href="#L872">872</a>                     project.fireBuildFinished(error);
+<a class="jxr_linenumber" name="L873" href="#L873">873</a>                 } <strong class="jxr_keyword">catch</strong> (Throwable t) {
+<a class="jxr_linenumber" name="L874" href="#L874">874</a>                     <em class="jxr_comment">// yes, I know it is bad style to catch Throwable,</em>
+<a class="jxr_linenumber" name="L875" href="#L875">875</a>                     <em class="jxr_comment">// but if we don't, we lose valuable information</em>
+<a class="jxr_linenumber" name="L876" href="#L876">876</a>                     System.err.println(<span class="jxr_string">"Caught an exception while logging the"</span>
+<a class="jxr_linenumber" name="L877" href="#L877">877</a>                                        + <span class="jxr_string">" end of the build.  Exception was:"</span>);
+<a class="jxr_linenumber" name="L878" href="#L878">878</a>                     t.printStackTrace();
+<a class="jxr_linenumber" name="L879" href="#L879">879</a>                     <strong class="jxr_keyword">if</strong> (error != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L880" href="#L880">880</a>                         System.err.println(<span class="jxr_string">"There has been an error prior to"</span>
+<a class="jxr_linenumber" name="L881" href="#L881">881</a>                                            + <span class="jxr_string">" that:"</span>);
+<a class="jxr_linenumber" name="L882" href="#L882">882</a>                         error.printStackTrace();
+<a class="jxr_linenumber" name="L883" href="#L883">883</a>                     }
+<a class="jxr_linenumber" name="L884" href="#L884">884</a>                     <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(t);
+<a class="jxr_linenumber" name="L885" href="#L885">885</a>                 }
+<a class="jxr_linenumber" name="L886" href="#L886">886</a>             } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (error != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L887" href="#L887">887</a>                 project.log(error.toString(), Project.MSG_ERR);
+<a class="jxr_linenumber" name="L888" href="#L888">888</a>             }
+<a class="jxr_linenumber" name="L889" href="#L889">889</a>         }
+<a class="jxr_linenumber" name="L890" href="#L890">890</a>     }
+<a class="jxr_linenumber" name="L891" href="#L891">891</a> 
+<a class="jxr_linenumber" name="L892" href="#L892">892</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> setProperties(<strong class="jxr_keyword">final</strong> Project project) {
+<a class="jxr_linenumber" name="L893" href="#L893">893</a> 
+<a class="jxr_linenumber" name="L894" href="#L894">894</a>         project.init();
+<a class="jxr_linenumber" name="L895" href="#L895">895</a> 
+<a class="jxr_linenumber" name="L896" href="#L896">896</a>         <em class="jxr_comment">// resolve properties</em>
+<a class="jxr_linenumber" name="L897" href="#L897">897</a>         PropertyHelper propertyHelper = PropertyHelper.getPropertyHelper(project);
+<a class="jxr_linenumber" name="L898" href="#L898">898</a>         @SuppressWarnings({ <span class="jxr_string">"rawtypes"</span>, <span class="jxr_string">"unchecked"</span> })
+<a class="jxr_linenumber" name="L899" href="#L899">899</a>         Map raw = <strong class="jxr_keyword">new</strong> HashMap(definedProps);
+<a class="jxr_linenumber" name="L900" href="#L900">900</a>         @SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
+<a class="jxr_linenumber" name="L901" href="#L901">901</a>         Map&lt;String, Object&gt; props = raw;
+<a class="jxr_linenumber" name="L902" href="#L902">902</a> 
+<a class="jxr_linenumber" name="L903" href="#L903">903</a>         ResolvePropertyMap resolver = <strong class="jxr_keyword">new</strong> ResolvePropertyMap(project,
+<a class="jxr_linenumber" name="L904" href="#L904">904</a>                 NOPROPERTIES, propertyHelper.getExpanders());
+<a class="jxr_linenumber" name="L905" href="#L905">905</a>         resolver.resolveAllProperties(props, <strong class="jxr_keyword">null</strong>, false);
+<a class="jxr_linenumber" name="L906" href="#L906">906</a> 
+<a class="jxr_linenumber" name="L907" href="#L907">907</a>         <em class="jxr_comment">// set user-define properties</em>
+<a class="jxr_linenumber" name="L908" href="#L908">908</a>         <strong class="jxr_keyword">for</strong> (Entry&lt;String, Object&gt; ent : props.entrySet()) {
+<a class="jxr_linenumber" name="L909" href="#L909">909</a>             String arg = ent.getKey();
+<a class="jxr_linenumber" name="L910" href="#L910">910</a>             Object value = ent.getValue();
+<a class="jxr_linenumber" name="L911" href="#L911">911</a>             project.setUserProperty(arg, String.valueOf(value));
+<a class="jxr_linenumber" name="L912" href="#L912">912</a>         }
+<a class="jxr_linenumber" name="L913" href="#L913">913</a> 
+<a class="jxr_linenumber" name="L914" href="#L914">914</a>         project.setUserProperty(MagicNames.ANT_FILE,
+<a class="jxr_linenumber" name="L915" href="#L915">915</a>                                 buildFile.getAbsolutePath());
+<a class="jxr_linenumber" name="L916" href="#L916">916</a>         project.setUserProperty(MagicNames.ANT_FILE_TYPE,
+<a class="jxr_linenumber" name="L917" href="#L917">917</a>                                 MagicNames.ANT_FILE_TYPE_FILE);
+<a class="jxr_linenumber" name="L918" href="#L918">918</a>     }
+<a class="jxr_linenumber" name="L919" href="#L919">919</a> 
+<a class="jxr_linenumber" name="L920" href="#L920">920</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L921" href="#L921">921</a> <em class="jxr_javadoccomment">     * Adds the listeners specified in the command line arguments,</em>
+<a class="jxr_linenumber" name="L922" href="#L922">922</a> <em class="jxr_javadoccomment">     * along with the default listener, to the specified project.</em>
+<a class="jxr_linenumber" name="L923" href="#L923">923</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L924" href="#L924">924</a> <em class="jxr_javadoccomment">     * @param project The project to add listeners to.</em>
+<a class="jxr_linenumber" name="L925" href="#L925">925</a> <em class="jxr_javadoccomment">     *                Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L926" href="#L926">926</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L927" href="#L927">927</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> addBuildListeners(Project project) {
+<a class="jxr_linenumber" name="L928" href="#L928">928</a> 
+<a class="jxr_linenumber" name="L929" href="#L929">929</a>         <em class="jxr_comment">// Add the default listener</em>
+<a class="jxr_linenumber" name="L930" href="#L930">930</a>         project.addBuildListener(createLogger());
+<a class="jxr_linenumber" name="L931" href="#L931">931</a> 
+<a class="jxr_linenumber" name="L932" href="#L932">932</a>         <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> count = listeners.size();
+<a class="jxr_linenumber" name="L933" href="#L933">933</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; count; i++) {
+<a class="jxr_linenumber" name="L934" href="#L934">934</a>             String className = (String) listeners.elementAt(i);
+<a class="jxr_linenumber" name="L935" href="#L935">935</a>             BuildListener listener =
+<a class="jxr_linenumber" name="L936" href="#L936">936</a>                     (BuildListener) ClasspathUtils.newInstance(className,
+<a class="jxr_linenumber" name="L937" href="#L937">937</a>                             Main.<strong class="jxr_keyword">class</strong>.getClassLoader(), BuildListener.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L938" href="#L938">938</a>             project.setProjectReference(listener);
+<a class="jxr_linenumber" name="L939" href="#L939">939</a> 
+<a class="jxr_linenumber" name="L940" href="#L940">940</a>             project.addBuildListener(listener);
+<a class="jxr_linenumber" name="L941" href="#L941">941</a>         }
+<a class="jxr_linenumber" name="L942" href="#L942">942</a>     }
+<a class="jxr_linenumber" name="L943" href="#L943">943</a> 
+<a class="jxr_linenumber" name="L944" href="#L944">944</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L945" href="#L945">945</a> <em class="jxr_javadoccomment">     * Creates the InputHandler and adds it to the project.</em>
+<a class="jxr_linenumber" name="L946" href="#L946">946</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L947" href="#L947">947</a> <em class="jxr_javadoccomment">     * @param project the project instance.</em>
+<a class="jxr_linenumber" name="L948" href="#L948">948</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L949" href="#L949">949</a> <em class="jxr_javadoccomment">     * @exception BuildException if a specified InputHandler</em>
+<a class="jxr_linenumber" name="L950" href="#L950">950</a> <em class="jxr_javadoccomment">     *                           implementation could not be loaded.</em>
+<a class="jxr_linenumber" name="L951" href="#L951">951</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L952" href="#L952">952</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> addInputHandler(Project project) <strong class="jxr_keyword">throws</strong> BuildException {
+<a class="jxr_linenumber" name="L953" href="#L953">953</a>         InputHandler handler = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L954" href="#L954">954</a>         <strong class="jxr_keyword">if</strong> (inputHandlerClassname == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L955" href="#L955">955</a>             handler = <strong class="jxr_keyword">new</strong> DefaultInputHandler();
+<a class="jxr_linenumber" name="L956" href="#L956">956</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L957" href="#L957">957</a>             handler = (InputHandler) ClasspathUtils.newInstance(
+<a class="jxr_linenumber" name="L958" href="#L958">958</a>                     inputHandlerClassname, Main.<strong class="jxr_keyword">class</strong>.getClassLoader(),
+<a class="jxr_linenumber" name="L959" href="#L959">959</a>                     InputHandler.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L960" href="#L960">960</a>             project.setProjectReference(handler);
+<a class="jxr_linenumber" name="L961" href="#L961">961</a>         }
+<a class="jxr_linenumber" name="L962" href="#L962">962</a>         project.setInputHandler(handler);
+<a class="jxr_linenumber" name="L963" href="#L963">963</a>     }
+<a class="jxr_linenumber" name="L964" href="#L964">964</a> 
+<a class="jxr_linenumber" name="L965" href="#L965">965</a>     <em class="jxr_comment">// TODO: (Jon Skeet) Any reason for writing a message and then using a bare</em>
+<a class="jxr_linenumber" name="L966" href="#L966">966</a>     <em class="jxr_comment">// RuntimeException rather than just using a BuildException here? Is it</em>
+<a class="jxr_linenumber" name="L967" href="#L967">967</a>     <em class="jxr_comment">// in case the message could end up being written to no loggers (as the</em>
+<a class="jxr_linenumber" name="L968" href="#L968">968</a>     <em class="jxr_comment">// loggers could have failed to be created due to this failure)?</em>
+<a class="jxr_linenumber" name="L969" href="#L969">969</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L970" href="#L970">970</a> <em class="jxr_javadoccomment">     * Creates the default build logger for sending build events to the ant</em>
+<a class="jxr_linenumber" name="L971" href="#L971">971</a> <em class="jxr_javadoccomment">     * log.</em>
+<a class="jxr_linenumber" name="L972" href="#L972">972</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L973" href="#L973">973</a> <em class="jxr_javadoccomment">     * @return the logger instance for this build.</em>
+<a class="jxr_linenumber" name="L974" href="#L974">974</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L975" href="#L975">975</a>     <strong class="jxr_keyword">private</strong> BuildLogger createLogger() {
+<a class="jxr_linenumber" name="L976" href="#L976">976</a>         BuildLogger logger = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L977" href="#L977">977</a>         <strong class="jxr_keyword">if</strong> (silent) {
+<a class="jxr_linenumber" name="L978" href="#L978">978</a>             logger = <strong class="jxr_keyword">new</strong> SilentLogger();
+<a class="jxr_linenumber" name="L979" href="#L979">979</a>             msgOutputLevel = Project.MSG_WARN;
+<a class="jxr_linenumber" name="L980" href="#L980">980</a>             emacsMode = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L981" href="#L981">981</a>         } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (loggerClassname != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L982" href="#L982">982</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L983" href="#L983">983</a>                 logger = (BuildLogger) ClasspathUtils.newInstance(
+<a class="jxr_linenumber" name="L984" href="#L984">984</a>                         loggerClassname, Main.<strong class="jxr_keyword">class</strong>.getClassLoader(),
+<a class="jxr_linenumber" name="L985" href="#L985">985</a>                         BuildLogger.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L986" href="#L986">986</a>             } <strong class="jxr_keyword">catch</strong> (BuildException e) {
+<a class="jxr_linenumber" name="L987" href="#L987">987</a>                 System.err.println(<span class="jxr_string">"The specified logger class "</span>
+<a class="jxr_linenumber" name="L988" href="#L988">988</a>                     + loggerClassname
+<a class="jxr_linenumber" name="L989" href="#L989">989</a>                     + <span class="jxr_string">" could not be used because "</span> + e.getMessage());
+<a class="jxr_linenumber" name="L990" href="#L990">990</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException();
+<a class="jxr_linenumber" name="L991" href="#L991">991</a>             }
+<a class="jxr_linenumber" name="L992" href="#L992">992</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L993" href="#L993">993</a>             logger = <strong class="jxr_keyword">new</strong> DefaultLogger();
+<a class="jxr_linenumber" name="L994" href="#L994">994</a>         }
+<a class="jxr_linenumber" name="L995" href="#L995">995</a> 
+<a class="jxr_linenumber" name="L996" href="#L996">996</a>         logger.setMessageOutputLevel(msgOutputLevel);
+<a class="jxr_linenumber" name="L997" href="#L997">997</a>         logger.setOutputPrintStream(out);
+<a class="jxr_linenumber" name="L998" href="#L998">998</a>         logger.setErrorPrintStream(err);
+<a class="jxr_linenumber" name="L999" href="#L999">999</a>         logger.setEmacsMode(emacsMode);
+<a class="jxr_linenumber" name="L1000" href="#L1000">1000</a> 
+<a class="jxr_linenumber" name="L1001" href="#L1001">1001</a>         <strong class="jxr_keyword">return</strong> logger;
+<a class="jxr_linenumber" name="L1002" href="#L1002">1002</a>     }
+<a class="jxr_linenumber" name="L1003" href="#L1003">1003</a> 
+<a class="jxr_linenumber" name="L1004" href="#L1004">1004</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1005" href="#L1005">1005</a> <em class="jxr_javadoccomment">     * Prints the usage information for this class to &lt;code&gt;System.out&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1006" href="#L1006">1006</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1007" href="#L1007">1007</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> printUsage() {
+<a class="jxr_linenumber" name="L1008" href="#L1008">1008</a>         System.out.println(<span class="jxr_string">"ant [options] [target [target2 [target3] ...]]"</span>);
+<a class="jxr_linenumber" name="L1009" href="#L1009">1009</a>         System.out.println(<span class="jxr_string">"Options: "</span>);
+<a class="jxr_linenumber" name="L1010" href="#L1010">1010</a>         System.out.println(<span class="jxr_string">"  -help, -h              print this message"</span>);
+<a class="jxr_linenumber" name="L1011" href="#L1011">1011</a>         System.out.println(<span class="jxr_string">"  -projecthelp, -p       print project help information"</span>);
+<a class="jxr_linenumber" name="L1012" href="#L1012">1012</a>         System.out.println(<span class="jxr_string">"  -version               print the version information and exit"</span>);
+<a class="jxr_linenumber" name="L1013" href="#L1013">1013</a>         System.out.println(<span class="jxr_string">"  -diagnostics           print information that might be helpful to"</span>);
+<a class="jxr_linenumber" name="L1014" href="#L1014">1014</a>         System.out.println(<span class="jxr_string">"                         diagnose or report problems."</span>);
+<a class="jxr_linenumber" name="L1015" href="#L1015">1015</a>         System.out.println(<span class="jxr_string">"  -quiet, -q             be extra quiet"</span>);
+<a class="jxr_linenumber" name="L1016" href="#L1016">1016</a>         System.out.println(<span class="jxr_string">"  -silent, -S            print nothing but task outputs and build failures"</span>);
+<a class="jxr_linenumber" name="L1017" href="#L1017">1017</a>         System.out.println(<span class="jxr_string">"  -verbose, -v           be extra verbose"</span>);
+<a class="jxr_linenumber" name="L1018" href="#L1018">1018</a>         System.out.println(<span class="jxr_string">"  -debug, -d             print debugging information"</span>);
+<a class="jxr_linenumber" name="L1019" href="#L1019">1019</a>         System.out.println(<span class="jxr_string">"  -emacs, -e             produce logging information without adornments"</span>);
+<a class="jxr_linenumber" name="L1020" href="#L1020">1020</a>         System.out.println(<span class="jxr_string">"  -lib &lt;path&gt;            specifies a path to search for jars and classes"</span>);
+<a class="jxr_linenumber" name="L1021" href="#L1021">1021</a>         System.out.println(<span class="jxr_string">"  -logfile &lt;file&gt;        use given file for log"</span>);
+<a class="jxr_linenumber" name="L1022" href="#L1022">1022</a>         System.out.println(<span class="jxr_string">"    -l     &lt;file&gt;                ''"</span>);
+<a class="jxr_linenumber" name="L1023" href="#L1023">1023</a>         System.out.println(<span class="jxr_string">"  -logger &lt;classname&gt;    the class which is to perform logging"</span>);
+<a class="jxr_linenumber" name="L1024" href="#L1024">1024</a>         System.out.println(<span class="jxr_string">"  -listener &lt;classname&gt;  add an instance of class as a project listener"</span>);
+<a class="jxr_linenumber" name="L1025" href="#L1025">1025</a>         System.out.println(<span class="jxr_string">"  -noinput               do not allow interactive input"</span>);
+<a class="jxr_linenumber" name="L1026" href="#L1026">1026</a>         System.out.println(<span class="jxr_string">"  -buildfile &lt;file&gt;      use given buildfile"</span>);
+<a class="jxr_linenumber" name="L1027" href="#L1027">1027</a>         System.out.println(<span class="jxr_string">"    -file    &lt;file&gt;              ''"</span>);
+<a class="jxr_linenumber" name="L1028" href="#L1028">1028</a>         System.out.println(<span class="jxr_string">"    -f       &lt;file&gt;              ''"</span>);
+<a class="jxr_linenumber" name="L1029" href="#L1029">1029</a>         System.out.println(<span class="jxr_string">"  -D&lt;property&gt;=&lt;value&gt;   use value for given property"</span>);
+<a class="jxr_linenumber" name="L1030" href="#L1030">1030</a>         System.out.println(<span class="jxr_string">"  -keep-going, -k        execute all targets that do not depend"</span>);
+<a class="jxr_linenumber" name="L1031" href="#L1031">1031</a>         System.out.println(<span class="jxr_string">"                         on failed target(s)"</span>);
+<a class="jxr_linenumber" name="L1032" href="#L1032">1032</a>         System.out.println(<span class="jxr_string">"  -propertyfile &lt;name&gt;   load all properties from file with -D"</span>);
+<a class="jxr_linenumber" name="L1033" href="#L1033">1033</a>         System.out.println(<span class="jxr_string">"                         properties taking precedence"</span>);
+<a class="jxr_linenumber" name="L1034" href="#L1034">1034</a>         System.out.println(<span class="jxr_string">"  -inputhandler &lt;class&gt;  the class which will handle input requests"</span>);
+<a class="jxr_linenumber" name="L1035" href="#L1035">1035</a>         System.out.println(<span class="jxr_string">"  -find &lt;file&gt;           (s)earch for buildfile towards the root of"</span>);
+<a class="jxr_linenumber" name="L1036" href="#L1036">1036</a>         System.out.println(<span class="jxr_string">"    -s  &lt;file&gt;           the filesystem and use it"</span>);
+<a class="jxr_linenumber" name="L1037" href="#L1037">1037</a>         System.out.println(<span class="jxr_string">"  -nice  number          A niceness value for the main thread:"</span>
+<a class="jxr_linenumber" name="L1038" href="#L1038">1038</a>                 + <span class="jxr_string">"                         1 (lowest) to 10 (highest); 5 is the default"</span>);
+<a class="jxr_linenumber" name="L1039" href="#L1039">1039</a>         System.out.println(<span class="jxr_string">"  -nouserlib             Run ant without using the jar files from"</span>
+<a class="jxr_linenumber" name="L1040" href="#L1040">1040</a>                 + <span class="jxr_string">"                         ${user.home}/.ant/lib"</span>);
+<a class="jxr_linenumber" name="L1041" href="#L1041">1041</a>         System.out.println(<span class="jxr_string">"  -noclasspath           Run ant without using CLASSPATH"</span>);
+<a class="jxr_linenumber" name="L1042" href="#L1042">1042</a>         System.out.println(<span class="jxr_string">"  -autoproxy             Java1.5+: use the OS proxy settings"</span>);
+<a class="jxr_linenumber" name="L1043" href="#L1043">1043</a>         System.out.println(<span class="jxr_string">"  -main &lt;class&gt;          override Ant's normal entry point"</span>);
+<a class="jxr_linenumber" name="L1044" href="#L1044">1044</a>         <strong class="jxr_keyword">for</strong> (ArgumentProcessor processor : ArgumentProcessorRegistry.getInstance().getProcessors()) {
+<a class="jxr_linenumber" name="L1045" href="#L1045">1045</a>             processor.printUsage(System.out);
+<a class="jxr_linenumber" name="L1046" href="#L1046">1046</a>         }
+<a class="jxr_linenumber" name="L1047" href="#L1047">1047</a>     }
+<a class="jxr_linenumber" name="L1048" href="#L1048">1048</a> 
+<a class="jxr_linenumber" name="L1049" href="#L1049">1049</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1050" href="#L1050">1050</a> <em class="jxr_javadoccomment">     * Prints the Ant version information to &lt;code&gt;System.out&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1051" href="#L1051">1051</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L1052" href="#L1052">1052</a> <em class="jxr_javadoccomment">     * @exception BuildException if the version information is unavailable</em>
+<a class="jxr_linenumber" name="L1053" href="#L1053">1053</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1054" href="#L1054">1054</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> printVersion(<strong class="jxr_keyword">int</strong> logLevel) <strong class="jxr_keyword">throws</strong> BuildException {
+<a class="jxr_linenumber" name="L1055" href="#L1055">1055</a>         System.out.println(getAntVersion());
+<a class="jxr_linenumber" name="L1056" href="#L1056">1056</a>     }
+<a class="jxr_linenumber" name="L1057" href="#L1057">1057</a> 
+<a class="jxr_linenumber" name="L1058" href="#L1058">1058</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1059" href="#L1059">1059</a> <em class="jxr_javadoccomment">     * Cache of the Ant version information when it has been loaded.</em>
+<a class="jxr_linenumber" name="L1060" href="#L1060">1060</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1061" href="#L1061">1061</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String antVersion = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L1062" href="#L1062">1062</a> 
+<a class="jxr_linenumber" name="L1063" href="#L1063">1063</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1064" href="#L1064">1064</a> <em class="jxr_javadoccomment">     * Cache of the short Ant version information when it has been loaded.</em>
+<a class="jxr_linenumber" name="L1065" href="#L1065">1065</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1066" href="#L1066">1066</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String shortAntVersion = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L1067" href="#L1067">1067</a>     
+<a class="jxr_linenumber" name="L1068" href="#L1068">1068</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1069" href="#L1069">1069</a> <em class="jxr_javadoccomment">     * Returns the Ant version information, if available. Once the information</em>
+<a class="jxr_linenumber" name="L1070" href="#L1070">1070</a> <em class="jxr_javadoccomment">     * has been loaded once, it's cached and returned from the cache on future</em>
+<a class="jxr_linenumber" name="L1071" href="#L1071">1071</a> <em class="jxr_javadoccomment">     * calls.</em>
+<a class="jxr_linenumber" name="L1072" href="#L1072">1072</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L1073" href="#L1073">1073</a> <em class="jxr_javadoccomment">     * @return the Ant version information as a String</em>
+<a class="jxr_linenumber" name="L1074" href="#L1074">1074</a> <em class="jxr_javadoccomment">     *         (always non-&lt;code&gt;null&lt;/code&gt;)</em>
+<a class="jxr_linenumber" name="L1075" href="#L1075">1075</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L1076" href="#L1076">1076</a> <em class="jxr_javadoccomment">     * @exception BuildException if the version information is unavailable</em>
+<a class="jxr_linenumber" name="L1077" href="#L1077">1077</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1078" href="#L1078">1078</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">synchronized</strong> String getAntVersion() <strong class="jxr_keyword">throws</strong> BuildException {
+<a class="jxr_linenumber" name="L1079" href="#L1079">1079</a>         <strong class="jxr_keyword">if</strong> (antVersion == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L1080" href="#L1080">1080</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L1081" href="#L1081">1081</a>                 Properties props = <strong class="jxr_keyword">new</strong> Properties();
+<a class="jxr_linenumber" name="L1082" href="#L1082">1082</a>                 InputStream in =
+<a class="jxr_linenumber" name="L1083" href="#L1083">1083</a>                     Main.<strong class="jxr_keyword">class</strong>.getResourceAsStream(<span class="jxr_string">"/org/apache/tools/ant/version.txt"</span>);
+<a class="jxr_linenumber" name="L1084" href="#L1084">1084</a>                 props.load(in);
+<a class="jxr_linenumber" name="L1085" href="#L1085">1085</a>                 in.close();
+<a class="jxr_linenumber" name="L1086" href="#L1086">1086</a>                 shortAntVersion = props.getProperty(<span class="jxr_string">"VERSION"</span>);
+<a class="jxr_linenumber" name="L1087" href="#L1087">1087</a> 
+<a class="jxr_linenumber" name="L1088" href="#L1088">1088</a>                 StringBuffer msg = <strong class="jxr_keyword">new</strong> StringBuffer();
+<a class="jxr_linenumber" name="L1089" href="#L1089">1089</a>                 msg.append(<span class="jxr_string">"Apache Ant(TM) version "</span>);
+<a class="jxr_linenumber" name="L1090" href="#L1090">1090</a>                 msg.append(shortAntVersion);
+<a class="jxr_linenumber" name="L1091" href="#L1091">1091</a>                 msg.append(<span class="jxr_string">" compiled on "</span>);
+<a class="jxr_linenumber" name="L1092" href="#L1092">1092</a>                 msg.append(props.getProperty(<span class="jxr_string">"DATE"</span>));
+<a class="jxr_linenumber" name="L1093" href="#L1093">1093</a>                 antVersion = msg.toString();
+<a class="jxr_linenumber" name="L1094" href="#L1094">1094</a>             } <strong class="jxr_keyword">catch</strong> (IOException ioe) {
+<a class="jxr_linenumber" name="L1095" href="#L1095">1095</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"Could not load the version information:"</span>
+<a class="jxr_linenumber" name="L1096" href="#L1096">1096</a>                                          + ioe.getMessage());
+<a class="jxr_linenumber" name="L1097" href="#L1097">1097</a>             } <strong class="jxr_keyword">catch</strong> (NullPointerException npe) {
+<a class="jxr_linenumber" name="L1098" href="#L1098">1098</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> BuildException(<span class="jxr_string">"Could not load the version information."</span>);
+<a class="jxr_linenumber" name="L1099" href="#L1099">1099</a>             }
+<a class="jxr_linenumber" name="L1100" href="#L1100">1100</a>         }
+<a class="jxr_linenumber" name="L1101" href="#L1101">1101</a>         <strong class="jxr_keyword">return</strong> antVersion;
+<a class="jxr_linenumber" name="L1102" href="#L1102">1102</a>     }
+<a class="jxr_linenumber" name="L1103" href="#L1103">1103</a>     
+<a class="jxr_linenumber" name="L1104" href="#L1104">1104</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1105" href="#L1105">1105</a> <em class="jxr_javadoccomment">     * Returns the short Ant version information, if available. Once the information</em>
+<a class="jxr_linenumber" name="L1106" href="#L1106">1106</a> <em class="jxr_javadoccomment">     * has been loaded once, it's cached and returned from the cache on future</em>
+<a class="jxr_linenumber" name="L1107" href="#L1107">1107</a> <em class="jxr_javadoccomment">     * calls.</em>
+<a class="jxr_linenumber" name="L1108" href="#L1108">1108</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="L1109" href="#L1109">1109</a> <em class="jxr_javadoccomment">     * @return the short Ant version information as a String</em>
+<a class="jxr_linenumber" name="L1110" href="#L1110">1110</a> <em class="jxr_javadoccomment">     *         (always non-&lt;code&gt;null&lt;/code&gt;)</em>
+<a class="jxr_linenumber" name="L1111" href="#L1111">1111</a> <em class="jxr_javadoccomment">     *         </em>
+<a class="jxr_linenumber" name="L1112" href="#L1112">1112</a> <em class="jxr_javadoccomment">     * @throws BuildException BuildException if the version information is unavailable</em>
+<a class="jxr_linenumber" name="L1113" href="#L1113">1113</a> <em class="jxr_javadoccomment">     * @since Ant 1.9.3</em>
+<a class="jxr_linenumber" name="L1114" href="#L1114">1114</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1115" href="#L1115">1115</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String getShortAntVersion() <strong class="jxr_keyword">throws</strong> BuildException {
+<a class="jxr_linenumber" name="L1116" href="#L1116">1116</a>         <strong class="jxr_keyword">if</strong> (shortAntVersion == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L1117" href="#L1117">1117</a>             getAntVersion();
+<a class="jxr_linenumber" name="L1118" href="#L1118">1118</a>         }
+<a class="jxr_linenumber" name="L1119" href="#L1119">1119</a>         <strong class="jxr_keyword">return</strong> shortAntVersion;
+<a class="jxr_linenumber" name="L1120" href="#L1120">1120</a>     }
+<a class="jxr_linenumber" name="L1121" href="#L1121">1121</a> 
+<a class="jxr_linenumber" name="L1122" href="#L1122">1122</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1123" href="#L1123">1123</a> <em class="jxr_javadoccomment">      * Prints the description of a project (if there is one) to</em>
+<a class="jxr_linenumber" name="L1124" href="#L1124">1124</a> <em class="jxr_javadoccomment">      * &lt;code&gt;System.out&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1125" href="#L1125">1125</a> <em class="jxr_javadoccomment">      *</em>
+<a class="jxr_linenumber" name="L1126" href="#L1126">1126</a> <em class="jxr_javadoccomment">      * @param project The project to display a description of.</em>
+<a class="jxr_linenumber" name="L1127" href="#L1127">1127</a> <em class="jxr_javadoccomment">      *                Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1128" href="#L1128">1128</a> <em class="jxr_javadoccomment">      */</em>
+<a class="jxr_linenumber" name="L1129" href="#L1129">1129</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> printDescription(Project project) {
+<a class="jxr_linenumber" name="L1130" href="#L1130">1130</a>        <strong class="jxr_keyword">if</strong> (project.getDescription() != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L1131" href="#L1131">1131</a>           project.log(project.getDescription());
+<a class="jxr_linenumber" name="L1132" href="#L1132">1132</a>        }
+<a class="jxr_linenumber" name="L1133" href="#L1133">1133</a>     }
+<a class="jxr_linenumber" name="L1134" href="#L1134">1134</a> 
+<a class="jxr_linenumber" name="L1135" href="#L1135">1135</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1136" href="#L1136">1136</a> <em class="jxr_javadoccomment">     * Targets in imported files with a project name</em>
+<a class="jxr_linenumber" name="L1137" href="#L1137">1137</a> <em class="jxr_javadoccomment">     * and not overloaded by the main build file will</em>
+<a class="jxr_linenumber" name="L1138" href="#L1138">1138</a> <em class="jxr_javadoccomment">     * be in the target map twice. This method</em>
+<a class="jxr_linenumber" name="L1139" href="#L1139">1139</a> <em class="jxr_javadoccomment">     * removes the duplicate target.</em>
+<a class="jxr_linenumber" name="L1140" href="#L1140">1140</a> <em class="jxr_javadoccomment">     * @param targets the targets to filter.</em>
+<a class="jxr_linenumber" name="L1141" href="#L1141">1141</a> <em class="jxr_javadoccomment">     * @return the filtered targets.</em>
+<a class="jxr_linenumber" name="L1142" href="#L1142">1142</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1143" href="#L1143">1143</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> Map&lt;String, Target&gt; removeDuplicateTargets(Map&lt;String, Target&gt; targets) {
+<a class="jxr_linenumber" name="L1144" href="#L1144">1144</a>         Map&lt;Location, Target&gt; locationMap = <strong class="jxr_keyword">new</strong> HashMap&lt;Location, Target&gt;();
+<a class="jxr_linenumber" name="L1145" href="#L1145">1145</a>         <strong class="jxr_keyword">for</strong> (Entry&lt;String, Target&gt; entry : targets.entrySet()) {
+<a class="jxr_linenumber" name="L1146" href="#L1146">1146</a>             String name = entry.getKey();
+<a class="jxr_linenumber" name="L1147" href="#L1147">1147</a>             Target target = entry.getValue();
+<a class="jxr_linenumber" name="L1148" href="#L1148">1148</a>             Target otherTarget = locationMap.get(target.getLocation());
+<a class="jxr_linenumber" name="L1149" href="#L1149">1149</a>             <em class="jxr_comment">// Place this entry in the location map if</em>
+<a class="jxr_linenumber" name="L1150" href="#L1150">1150</a>             <em class="jxr_comment">//  a) location is not in the map</em>
+<a class="jxr_linenumber" name="L1151" href="#L1151">1151</a>             <em class="jxr_comment">//  b) location is in map, but its name is longer</em>
+<a class="jxr_linenumber" name="L1152" href="#L1152">1152</a>             <em class="jxr_comment">//     (an imported target will have a name. prefix)</em>
+<a class="jxr_linenumber" name="L1153" href="#L1153">1153</a>             <strong class="jxr_keyword">if</strong> (otherTarget == <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="L1154" href="#L1154">1154</a>                 || otherTarget.getName().length() &gt; name.length()) {
+<a class="jxr_linenumber" name="L1155" href="#L1155">1155</a>                 locationMap.put(
+<a class="jxr_linenumber" name="L1156" href="#L1156">1156</a>                     target.getLocation(), target); <em class="jxr_comment">// Smallest name wins</em>
+<a class="jxr_linenumber" name="L1157" href="#L1157">1157</a>             }
+<a class="jxr_linenumber" name="L1158" href="#L1158">1158</a>         }
+<a class="jxr_linenumber" name="L1159" href="#L1159">1159</a>         Map&lt;String, Target&gt; ret = <strong class="jxr_keyword">new</strong> HashMap&lt;String, Target&gt;();
+<a class="jxr_linenumber" name="L1160" href="#L1160">1160</a>         <strong class="jxr_keyword">for</strong> (Target target : locationMap.values()) {
+<a class="jxr_linenumber" name="L1161" href="#L1161">1161</a>             ret.put(target.getName(), target);
+<a class="jxr_linenumber" name="L1162" href="#L1162">1162</a>         }
+<a class="jxr_linenumber" name="L1163" href="#L1163">1163</a>         <strong class="jxr_keyword">return</strong> ret;
+<a class="jxr_linenumber" name="L1164" href="#L1164">1164</a>     }
+<a class="jxr_linenumber" name="L1165" href="#L1165">1165</a> 
+<a class="jxr_linenumber" name="L1166" href="#L1166">1166</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1167" href="#L1167">1167</a> <em class="jxr_javadoccomment">     * Prints a list of all targets in the specified project to</em>
+<a class="jxr_linenumber" name="L1168" href="#L1168">1168</a> <em class="jxr_javadoccomment">     * &lt;code&gt;System.out&lt;/code&gt;, optionally including subtargets.</em>
+<a class="jxr_linenumber" name="L1169" href="#L1169">1169</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L1170" href="#L1170">1170</a> <em class="jxr_javadoccomment">     * @param project The project to display a description of.</em>
+<a class="jxr_linenumber" name="L1171" href="#L1171">1171</a> <em class="jxr_javadoccomment">     *                Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1172" href="#L1172">1172</a> <em class="jxr_javadoccomment">     * @param printSubTargets Whether or not subtarget names should also be</em>
+<a class="jxr_linenumber" name="L1173" href="#L1173">1173</a> <em class="jxr_javadoccomment">     *                        printed.</em>
+<a class="jxr_linenumber" name="L1174" href="#L1174">1174</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1175" href="#L1175">1175</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> printTargets(Project project, <strong class="jxr_keyword">boolean</strong> printSubTargets,
+<a class="jxr_linenumber" name="L1176" href="#L1176">1176</a>             <strong class="jxr_keyword">boolean</strong> printDependencies) {
+<a class="jxr_linenumber" name="L1177" href="#L1177">1177</a>         <em class="jxr_comment">// find the target with the longest name</em>
+<a class="jxr_linenumber" name="L1178" href="#L1178">1178</a>         <strong class="jxr_keyword">int</strong> maxLength = 0;
+<a class="jxr_linenumber" name="L1179" href="#L1179">1179</a>         Map&lt;String, Target&gt; ptargets = removeDuplicateTargets(project.getTargets());
+<a class="jxr_linenumber" name="L1180" href="#L1180">1180</a>         <em class="jxr_comment">// split the targets in top-level and sub-targets depending</em>
+<a class="jxr_linenumber" name="L1181" href="#L1181">1181</a>         <em class="jxr_comment">// on the presence of a description</em>
+<a class="jxr_linenumber" name="L1182" href="#L1182">1182</a>         Vector&lt;String&gt; topNames = <strong class="jxr_keyword">new</strong> Vector&lt;String&gt;();
+<a class="jxr_linenumber" name="L1183" href="#L1183">1183</a>         Vector&lt;String&gt; topDescriptions = <strong class="jxr_keyword">new</strong> Vector&lt;String&gt;();
+<a class="jxr_linenumber" name="L1184" href="#L1184">1184</a>         Vector&lt;Enumeration&lt;String&gt;&gt; topDependencies = <strong class="jxr_keyword">new</strong> Vector&lt;Enumeration&lt;String&gt;&gt;();
+<a class="jxr_linenumber" name="L1185" href="#L1185">1185</a>         Vector&lt;String&gt; subNames = <strong class="jxr_keyword">new</strong> Vector&lt;String&gt;();
+<a class="jxr_linenumber" name="L1186" href="#L1186">1186</a>         Vector&lt;Enumeration&lt;String&gt;&gt; subDependencies = <strong class="jxr_keyword">new</strong> Vector&lt;Enumeration&lt;String&gt;&gt;();
+<a class="jxr_linenumber" name="L1187" href="#L1187">1187</a> 
+<a class="jxr_linenumber" name="L1188" href="#L1188">1188</a>         <strong class="jxr_keyword">for</strong> (Target currentTarget : ptargets.values()) {
+<a class="jxr_linenumber" name="L1189" href="#L1189">1189</a>             String targetName = currentTarget.getName();
+<a class="jxr_linenumber" name="L1190" href="#L1190">1190</a>             <strong class="jxr_keyword">if</strong> (targetName.equals(<span class="jxr_string">""</span>)) {
+<a class="jxr_linenumber" name="L1191" href="#L1191">1191</a>                 <strong class="jxr_keyword">continue</strong>;
+<a class="jxr_linenumber" name="L1192" href="#L1192">1192</a>             }
+<a class="jxr_linenumber" name="L1193" href="#L1193">1193</a>             String targetDescription = currentTarget.getDescription();
+<a class="jxr_linenumber" name="L1194" href="#L1194">1194</a>             <em class="jxr_comment">// maintain a sorted list of targets</em>
+<a class="jxr_linenumber" name="L1195" href="#L1195">1195</a>             <strong class="jxr_keyword">if</strong> (targetDescription == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L1196" href="#L1196">1196</a>                 <strong class="jxr_keyword">int</strong> pos = findTargetPosition(subNames, targetName);
+<a class="jxr_linenumber" name="L1197" href="#L1197">1197</a>                 subNames.insertElementAt(targetName, pos);
+<a class="jxr_linenumber" name="L1198" href="#L1198">1198</a>                 <strong class="jxr_keyword">if</strong> (printDependencies) {
+<a class="jxr_linenumber" name="L1199" href="#L1199">1199</a>                     subDependencies.insertElementAt(currentTarget.getDependencies(), pos);
+<a class="jxr_linenumber" name="L1200" href="#L1200">1200</a>                 }
+<a class="jxr_linenumber" name="L1201" href="#L1201">1201</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L1202" href="#L1202">1202</a>                 <strong class="jxr_keyword">int</strong> pos = findTargetPosition(topNames, targetName);
+<a class="jxr_linenumber" name="L1203" href="#L1203">1203</a>                 topNames.insertElementAt(targetName, pos);
+<a class="jxr_linenumber" name="L1204" href="#L1204">1204</a>                 topDescriptions.insertElementAt(targetDescription, pos);
+<a class="jxr_linenumber" name="L1205" href="#L1205">1205</a>                 <strong class="jxr_keyword">if</strong> (targetName.length() &gt; maxLength) {
+<a class="jxr_linenumber" name="L1206" href="#L1206">1206</a>                     maxLength = targetName.length();
+<a class="jxr_linenumber" name="L1207" href="#L1207">1207</a>                 }
+<a class="jxr_linenumber" name="L1208" href="#L1208">1208</a>                 <strong class="jxr_keyword">if</strong> (printDependencies) {
+<a class="jxr_linenumber" name="L1209" href="#L1209">1209</a>                     topDependencies.insertElementAt(currentTarget.getDependencies(), pos);
+<a class="jxr_linenumber" name="L1210" href="#L1210">1210</a>                 }
+<a class="jxr_linenumber" name="L1211" href="#L1211">1211</a>             }
+<a class="jxr_linenumber" name="L1212" href="#L1212">1212</a>         }
+<a class="jxr_linenumber" name="L1213" href="#L1213">1213</a> 
+<a class="jxr_linenumber" name="L1214" href="#L1214">1214</a>         printTargets(project, topNames, topDescriptions, topDependencies,
+<a class="jxr_linenumber" name="L1215" href="#L1215">1215</a>                 <span class="jxr_string">"Main targets:"</span>, maxLength);
+<a class="jxr_linenumber" name="L1216" href="#L1216">1216</a>         <em class="jxr_comment">//if there were no main targets, we list all subtargets</em>
+<a class="jxr_linenumber" name="L1217" href="#L1217">1217</a>         <em class="jxr_comment">//as it means nothing has a description</em>
+<a class="jxr_linenumber" name="L1218" href="#L1218">1218</a>         <strong class="jxr_keyword">if</strong> (topNames.size() == 0) {
+<a class="jxr_linenumber" name="L1219" href="#L1219">1219</a>             printSubTargets = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L1220" href="#L1220">1220</a>         }
+<a class="jxr_linenumber" name="L1221" href="#L1221">1221</a>         <strong class="jxr_keyword">if</strong> (printSubTargets) {
+<a class="jxr_linenumber" name="L1222" href="#L1222">1222</a>             printTargets(project, subNames, <strong class="jxr_keyword">null</strong>, subDependencies, <span class="jxr_string">"Other targets:"</span>, 0);
+<a class="jxr_linenumber" name="L1223" href="#L1223">1223</a>         }
+<a class="jxr_linenumber" name="L1224" href="#L1224">1224</a> 
+<a class="jxr_linenumber" name="L1225" href="#L1225">1225</a>         String defaultTarget = project.getDefaultTarget();
+<a class="jxr_linenumber" name="L1226" href="#L1226">1226</a>         <strong class="jxr_keyword">if</strong> (defaultTarget != <strong class="jxr_keyword">null</strong> &amp;&amp; !<span class="jxr_string">""</span>.equals(defaultTarget)) {
+<a class="jxr_linenumber" name="L1227" href="#L1227">1227</a>             <em class="jxr_comment">// shouldn't need to check but...</em>
+<a class="jxr_linenumber" name="L1228" href="#L1228">1228</a>             project.log(<span class="jxr_string">"Default target: "</span> + defaultTarget);
+<a class="jxr_linenumber" name="L1229" href="#L1229">1229</a>         }
+<a class="jxr_linenumber" name="L1230" href="#L1230">1230</a>     }
+<a class="jxr_linenumber" name="L1231" href="#L1231">1231</a> 
+<a class="jxr_linenumber" name="L1232" href="#L1232">1232</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1233" href="#L1233">1233</a> <em class="jxr_javadoccomment">     * Searches for the correct place to insert a name into a list so as</em>
+<a class="jxr_linenumber" name="L1234" href="#L1234">1234</a> <em class="jxr_javadoccomment">     * to keep the list sorted alphabetically.</em>
+<a class="jxr_linenumber" name="L1235" href="#L1235">1235</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L1236" href="#L1236">1236</a> <em class="jxr_javadoccomment">     * @param names The current list of names. Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1237" href="#L1237">1237</a> <em class="jxr_javadoccomment">     * @param name  The name to find a place for.</em>
+<a class="jxr_linenumber" name="L1238" href="#L1238">1238</a> <em class="jxr_javadoccomment">     *              Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1239" href="#L1239">1239</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L1240" href="#L1240">1240</a> <em class="jxr_javadoccomment">     * @return the correct place in the list for the given name</em>
+<a class="jxr_linenumber" name="L1241" href="#L1241">1241</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1242" href="#L1242">1242</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> findTargetPosition(Vector&lt;String&gt; names, String name) {
+<a class="jxr_linenumber" name="L1243" href="#L1243">1243</a>         <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> size = names.size();
+<a class="jxr_linenumber" name="L1244" href="#L1244">1244</a>         <strong class="jxr_keyword">int</strong> res = size;
+<a class="jxr_linenumber" name="L1245" href="#L1245">1245</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; size &amp;&amp; res == size; i++) {
+<a class="jxr_linenumber" name="L1246" href="#L1246">1246</a>             <strong class="jxr_keyword">if</strong> (name.compareTo(names.elementAt(i)) &lt; 0) {
+<a class="jxr_linenumber" name="L1247" href="#L1247">1247</a>                 res = i;
+<a class="jxr_linenumber" name="L1248" href="#L1248">1248</a>             }
+<a class="jxr_linenumber" name="L1249" href="#L1249">1249</a>         }
+<a class="jxr_linenumber" name="L1250" href="#L1250">1250</a>         <strong class="jxr_keyword">return</strong> res;
+<a class="jxr_linenumber" name="L1251" href="#L1251">1251</a>     }
+<a class="jxr_linenumber" name="L1252" href="#L1252">1252</a> 
+<a class="jxr_linenumber" name="L1253" href="#L1253">1253</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L1254" href="#L1254">1254</a> <em class="jxr_javadoccomment">     * Writes a formatted list of target names to &lt;code&gt;System.out&lt;/code&gt;</em>
+<a class="jxr_linenumber" name="L1255" href="#L1255">1255</a> <em class="jxr_javadoccomment">     * with an optional description.</em>
+<a class="jxr_linenumber" name="L1256" href="#L1256">1256</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L1257" href="#L1257">1257</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L1258" href="#L1258">1258</a> <em class="jxr_javadoccomment">     * @param project the project instance.</em>
+<a class="jxr_linenumber" name="L1259" href="#L1259">1259</a> <em class="jxr_javadoccomment">     * @param names The names to be printed.</em>
+<a class="jxr_linenumber" name="L1260" href="#L1260">1260</a> <em class="jxr_javadoccomment">     *              Must not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1261" href="#L1261">1261</a> <em class="jxr_javadoccomment">     * @param descriptions The associated target descriptions.</em>
+<a class="jxr_linenumber" name="L1262" href="#L1262">1262</a> <em class="jxr_javadoccomment">     *                     May be &lt;code&gt;null&lt;/code&gt;, in which case</em>
+<a class="jxr_linenumber" name="L1263" href="#L1263">1263</a> <em class="jxr_javadoccomment">     *                     no descriptions are displayed.</em>
+<a class="jxr_linenumber" name="L1264" href="#L1264">1264</a> <em class="jxr_javadoccomment">     *                     If non-&lt;code&gt;null&lt;/code&gt;, this should have</em>
+<a class="jxr_linenumber" name="L1265" href="#L1265">1265</a> <em class="jxr_javadoccomment">     *                     as many elements as &lt;code&gt;names&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1266" href="#L1266">1266</a> <em class="jxr_javadoccomment">     * @param topDependencies The list of dependencies for each target.</em>
+<a class="jxr_linenumber" name="L1267" href="#L1267">1267</a> <em class="jxr_javadoccomment">     *                        The dependencies are listed as a non null</em>
+<a class="jxr_linenumber" name="L1268" href="#L1268">1268</a> <em class="jxr_javadoccomment">     *                        enumeration of String.</em>
+<a class="jxr_linenumber" name="L1269" href="#L1269">1269</a> <em class="jxr_javadoccomment">     * @param heading The heading to display.</em>
+<a class="jxr_linenumber" name="L1270" href="#L1270">1270</a> <em class="jxr_javadoccomment">     *                Should not be &lt;code&gt;null&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L1271" href="#L1271">1271</a> <em class="jxr_javadoccomment">     * @param maxlen The maximum length of the names of the targets.</em>
+<a class="jxr_linenumber" name="L1272" href="#L1272">1272</a> <em class="jxr_javadoccomment">     *               If descriptions are given, they are padded to this</em>
+<a class="jxr_linenumber" name="L1273" href="#L1273">1273</a> <em class="jxr_javadoccomment">     *               position so they line up (so long as the names really</em>
+<a class="jxr_linenumber" name="L1274" href="#L1274">1274</a> <em class="jxr_javadoccomment">     *               &lt;i&gt;are&lt;/i&gt; shorter than this).</em>
+<a class="jxr_linenumber" name="L1275" href="#L1275">1275</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L1276" href="#L1276">1276</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> printTargets(Project project, Vector&lt;String&gt; names,
+<a class="jxr_linenumber" name="L1277" href="#L1277">1277</a>                                      Vector&lt;String&gt; descriptions, Vector&lt;Enumeration&lt;String&gt;&gt; dependencies,
+<a class="jxr_linenumber" name="L1278" href="#L1278">1278</a>                                      String heading,
+<a class="jxr_linenumber" name="L1279" href="#L1279">1279</a>                                      <strong class="jxr_keyword">int</strong> maxlen) {
+<a class="jxr_linenumber" name="L1280" href="#L1280">1280</a>         <em class="jxr_comment">// now, start printing the targets and their descriptions</em>
+<a class="jxr_linenumber" name="L1281" href="#L1281">1281</a>         String lSep = System.getProperty(<span class="jxr_string">"line.separator"</span>);
+<a class="jxr_linenumber" name="L1282" href="#L1282">1282</a>         <em class="jxr_comment">// got a bit annoyed that I couldn't find a pad function</em>
+<a class="jxr_linenumber" name="L1283" href="#L1283">1283</a>         String spaces = <span class="jxr_string">"    "</span>;
+<a class="jxr_linenumber" name="L1284" href="#L1284">1284</a>         <strong class="jxr_keyword">while</strong> (spaces.length() &lt;= maxlen) {
+<a class="jxr_linenumber" name="L1285" href="#L1285">1285</a>             spaces += spaces;
+<a class="jxr_linenumber" name="L1286" href="#L1286">1286</a>         }
+<a class="jxr_linenumber" name="L1287" href="#L1287">1287</a>         StringBuilder msg = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="L1288" href="#L1288">1288</a>         msg.append(heading + lSep + lSep);
+<a class="jxr_linenumber" name="L1289" href="#L1289">1289</a>         <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> size = names.size();
+<a class="jxr_linenumber" name="L1290" href="#L1290">1290</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; size; i++) {
+<a class="jxr_linenumber" name="L1291" href="#L1291">1291</a>             msg.append(<span class="jxr_string">" "</span>);
+<a class="jxr_linenumber" name="L1292" href="#L1292">1292</a>             msg.append(names.elementAt(i));
+<a class="jxr_linenumber" name="L1293" href="#L1293">1293</a>             <strong class="jxr_keyword">if</strong> (descriptions != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L1294" href="#L1294">1294</a>                 msg.append(
+<a class="jxr_linenumber" name="L1295" href="#L1295">1295</a>                     spaces.substring(0, maxlen - names.elementAt(i).length() + 2));
+<a class="jxr_linenumber" name="L1296" href="#L1296">1296</a>                 msg.append(descriptions.elementAt(i));
+<a class="jxr_linenumber" name="L1297" href="#L1297">1297</a>             }
+<a class="jxr_linenumber" name="L1298" href="#L1298">1298</a>             msg.append(lSep);
+<a class="jxr_linenumber" name="L1299" href="#L1299">1299</a>             <strong class="jxr_keyword">if</strong> (!dependencies.isEmpty()) {
+<a class="jxr_linenumber" name="L1300" href="#L1300">1300</a>                 Enumeration&lt;String&gt; deps = dependencies.elementAt(i);
+<a class="jxr_linenumber" name="L1301" href="#L1301">1301</a>                 <strong class="jxr_keyword">if</strong> (deps.hasMoreElements()) {
+<a class="jxr_linenumber" name="L1302" href="#L1302">1302</a>                     msg.append(<span class="jxr_string">"   depends on: "</span>);
+<a class="jxr_linenumber" name="L1303" href="#L1303">1303</a>                     <strong class="jxr_keyword">while</strong> (deps.hasMoreElements()) {
+<a class="jxr_linenumber" name="L1304" href="#L1304">1304</a>                         msg.append(deps.nextElement());
+<a class="jxr_linenumber" name="L1305" href="#L1305">1305</a>                         <strong class="jxr_keyword">if</strong> (deps.hasMoreElements()) {
+<a class="jxr_linenumber" name="L1306" href="#L1306">1306</a>                             msg.append(<span class="jxr_string">", "</span>);
+<a class="jxr_linenumber" name="L1307" href="#L1307">1307</a>                         }
+<a class="jxr_linenumber" name="L1308" href="#L1308">1308</a>                     }
+<a class="jxr_linenumber" name="L1309" href="#L1309">1309</a>                     msg.append(lSep);
+<a class="jxr_linenumber" name="L1310" href="#L1310">1310</a>                 }
+<a class="jxr_linenumber" name="L1311" href="#L1311">1311</a>             }
+<a class="jxr_linenumber" name="L1312" href="#L1312">1312</a>         }
+<a class="jxr_linenumber" name="L1313" href="#L1313">1313</a>         project.log(msg.toString(), Project.MSG_WARN);
+<a class="jxr_linenumber" name="L1314" href="#L1314">1314</a>     }
+<a class="jxr_linenumber" name="L1315" href="#L1315">1315</a> }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>

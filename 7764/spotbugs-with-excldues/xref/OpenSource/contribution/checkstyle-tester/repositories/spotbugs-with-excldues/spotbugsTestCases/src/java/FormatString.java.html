@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FormatString xref</title>
+<link type="text/css" rel="stylesheet" href="../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">import</strong> java.util.Date;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> edu.umd.cs.findbugs.annotations.ExpectWarning;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> edu.umd.cs.findbugs.annotations.NoWarning;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> FormatString {
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>       @ExpectWarning(<span class="jxr_string">"FS"</span>)
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>       <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String args[]) {
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>           falsePositive();
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>          java.util.Formatter f = <strong class="jxr_keyword">new</strong> java.util.Formatter();
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>          System.out.println(f.format(<span class="jxr_string">"%d %s %f %d %f"</span>, 8, <span class="jxr_string">"boy"</span>, 7.7, 9, 9.9, 10)); <em class="jxr_comment">// warning</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>                                                                                     <em class="jxr_comment">// !</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>          System.out.println(f.format(<span class="jxr_string">"%d %s %f %d %f %d"</span>, 8, <span class="jxr_string">"boy"</span>, 7.7, 9, 9.9, 10, 11)); <em class="jxr_comment">// warning</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>                                                                                            <em class="jxr_comment">// !</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>          System.out.println(String.format(<span class="jxr_string">"%d %n"</span>, 1, 2)); <em class="jxr_comment">// warning!</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>          System.out.printf(<span class="jxr_string">"%s\n"</span>, <strong class="jxr_keyword">new</strong> <strong class="jxr_keyword">int</strong>[] { 1, 2 });
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          System.out.printf(<span class="jxr_string">"%b\n"</span>, <span class="jxr_string">"false"</span>);
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          System.out.printf(<span class="jxr_string">"%d\n"</span>, <span class="jxr_string">"foo"</span>);
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          System.out.printf(<span class="jxr_string">"%d% \n"</span>, 42);
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          System.out.printf(<span class="jxr_string">"%d\n"</span>, <strong class="jxr_keyword">new</strong> <strong class="jxr_keyword">int</strong>[] { 1, 2 });
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          System.out.printf(<span class="jxr_string">"%s\n"</span>, (Object) <strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"a"</span>, <span class="jxr_string">"b"</span> });
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          varargsMethod((Object[]) args);
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>      }
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>      @NoWarning(<span class="jxr_string">"FS"</span>)
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> falsePositive() {
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          System.out.printf(<span class="jxr_string">"last updated %1$tY-%1$tm-%1$te %1$tH:%1$tM:%1$tS.%1$tL, threshold %2$d min.%n"</span>, <strong class="jxr_keyword">new</strong> Date(), 20);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          java.util.Formatter f = <strong class="jxr_keyword">new</strong> java.util.Formatter();
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          System.out.println(String.format(<span class="jxr_string">"%d %s"</span>, 8, <span class="jxr_string">"boy"</span>)); <em class="jxr_comment">// no warning</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          System.out.println(f.format(<span class="jxr_string">"%d %s %f %d %f %d"</span>, 8, <span class="jxr_string">"boy"</span>, 7.7, 9, 9.9, 10)); <em class="jxr_comment">// no</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>                                                                                        <em class="jxr_comment">// warning</em>
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          System.out.printf(<span class="jxr_string">"%d"</span>, 7); <em class="jxr_comment">// no warning</em>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          System.out.format(<span class="jxr_string">"%d"</span>, 8); <em class="jxr_comment">// no warning</em>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>          System.out.println(f.format(<span class="jxr_string">"%d %%%%%s %% %f %d %%%f %%%d"</span>, 8, <span class="jxr_string">"boy"</span>, 7.7, 9, 9.9, 10)); <em class="jxr_comment">// no</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>                                                                                                   <em class="jxr_comment">// warning</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>          System.out.println(String.format(<span class="jxr_string">"%d %n"</span>, 1)); <em class="jxr_comment">// no warning (%n does</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>                                                         <em class="jxr_comment">// not consume an</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>                                                         <em class="jxr_comment">// argument)</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>      }
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> varargsMethod(Object... args) {
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <strong class="jxr_keyword">if</strong> (args[0] instanceof String) {
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>              System.out.println((String) args[0]);
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          }
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      }
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>

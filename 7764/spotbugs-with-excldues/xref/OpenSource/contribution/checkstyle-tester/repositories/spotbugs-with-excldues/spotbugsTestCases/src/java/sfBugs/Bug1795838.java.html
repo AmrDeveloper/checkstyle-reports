@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Bug1795838 xref</title>
+<link type="text/css" rel="stylesheet" href="../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> sfBugs;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_javadoccomment"> * Submitted By: Heiko W.Rupp - pilhuhn Summary: (?) NPE and NFE concerning</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_javadoccomment"> * types like Integer not found</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment"> * The attache file contains three Exception throwing locations that all are not</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment"> * detected.</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment"> * The first one is from autounboxing NULL as Integer into an int. The second</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment"> * one is the explicit version of the previous one. The third is not a NPE, but</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment"> * a guaranteed NumberFormatException.</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> Bug1795838 {
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String arg[]) {
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>          Bug1795838 fb = <strong class="jxr_keyword">new</strong> Bug1795838();
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>          fb.foo();
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>      }
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> foo() {
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          <strong class="jxr_keyword">int</strong> x;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          <em class="jxr_comment">// Guaranteed NullPointerException</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          x = bar(); <em class="jxr_comment">// NPE due to implicit Integer.intValue()</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          System.out.println(<span class="jxr_string">"X is "</span> + x);
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          Integer tmp;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          tmp = bar();
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          <em class="jxr_comment">// Guaranteed NullPointerException</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <strong class="jxr_keyword">int</strong> i = tmp.intValue(); <em class="jxr_comment">// NPE</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          System.out.println(<span class="jxr_string">"I is "</span> + i);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          <em class="jxr_comment">// Guaranteed NumberFormatException</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          i = Integer.parseInt(<strong class="jxr_keyword">null</strong>); <em class="jxr_comment">// NFE : null</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          System.out.println(<span class="jxr_string">"I is now"</span> + i);
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>      }
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      <strong class="jxr_keyword">public</strong> Integer bar() {
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      }
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>

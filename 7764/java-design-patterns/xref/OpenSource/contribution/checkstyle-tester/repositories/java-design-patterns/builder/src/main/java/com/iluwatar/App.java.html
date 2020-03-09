@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>App xref</title>
+<link type="text/css" rel="stylesheet" href="../../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> com.iluwatar;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> com.iluwatar.Hero.HeroBuilder;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment"> * This is the Builder pattern variation as described by Joshua Bloch in</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment"> * Effective Java 2nd Edition.</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment"> * We want to build Hero objects, but its construction is complex because of the</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment"> * many parameters needed. To aid the user we introduce HeroBuilder class.</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment"> * HeroBuilder takes the minimum parameters to build Hero object in its</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment"> * constructor. After that additional configuration for the Hero object can be</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment"> * done using the fluent HeroBuilder interface. When configuration is ready the</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment"> * build method is called to receive the final Hero object.</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment"> * </em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> App {
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  		Hero mage = <strong class="jxr_keyword">new</strong> HeroBuilder(Profession.MAGE, <span class="jxr_string">"Riobard"</span>)
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  				.withHairColor(HairColor.BLACK).withWeapon(Weapon.DAGGER)
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  				.build();
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  		System.out.println(mage);
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  		Hero warrior = <strong class="jxr_keyword">new</strong> HeroBuilder(Profession.WARRIOR, <span class="jxr_string">"Amberjill"</span>)
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  				.withHairColor(HairColor.BLOND)
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  				.withHairType(HairType.LONG_CURLY).withArmor(Armor.CHAIN_MAIL)
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  				.withWeapon(Weapon.SWORD).build();
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  		System.out.println(warrior);
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  		Hero thief = <strong class="jxr_keyword">new</strong> HeroBuilder(Profession.THIEF, <span class="jxr_string">"Desmond"</span>)
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  				.withHairType(HairType.BALD).withWeapon(Weapon.BOW).build();
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  		System.out.println(thief);
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  	}
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>

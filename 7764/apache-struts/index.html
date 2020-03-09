@@ -1,0 +1,611 @@
+<html>
+	<head>
+		<title>checkstyle xml difference report</title>
+		<style type="text/css" media="all">@import url("./css/maven-base.css");@import url("./css/maven-theme.css"); );</style>
+		<link rel="stylesheet" href="./css/site.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<http-equiv http-equiv="Content-Language" content="en"></http-equiv>
+	</head>
+	<body class="composite">
+		<div id="contentBox">
+			<div class="section">
+				<h2 a="Checkstyle XML difference report">Checkstyle XML difference report</h2>
+				This is symmetric difference generated from two checkstyle-result.xml reports. <br/>
+				All matching records from each XML file are deleted, then remaining records are merged into single report. <br>
+		        <a href="https://github.com/checkstyle/contribution/tree/master/patch-diff-report-tool">Utility that generated this report.</a>
+			</div>
+
+			
+				<h2 a="Checkstyle configuration report">Checkstyle configuration report</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Module Name</th>
+								<th>Base properties</th>
+								<th>Patch properties</th>
+							</tr>
+							
+								
+									<tr>
+										<td class="c">Checker</td>
+										
+										<td class="c">
+											
+												severity
+												
+													<li>warning</li>
+												
+												<br/>
+											
+												charset
+												
+													<li>UTF-8</li>
+												
+												<br/>
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												severity
+												
+													<li>warning</li>
+												
+												<br/>
+											
+												charset
+												
+													<li>UTF-8</li>
+												
+												<br/>
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">BeforeExecutionExclusionFileFilter</td>
+										
+										<td class="c">
+											
+												fileNamePattern
+												
+													<li>module\-info\.java$</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												fileNamePattern
+												
+													<li>module\-info\.java$</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+										
+									<tr>
+										<td class="c">TreeWalker</td>
+										
+										<td class="c">
+											
+										</td>
+										
+										
+										<td class="c">
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">UncommentedMain</td>
+										
+										<td class="c">
+											
+										</td>
+										
+										
+										<td class="c">
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+								
+									
+								
+								
+					</table>	
+				</div>
+			
+
+			<div class="section">
+				<h2 a="Summary:">Summary:</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+						<tr class="a">
+							<th>Report id</th>
+							<th>Files</th>
+							<th>Violations</th>
+							
+								<th>Severity-warning</th>
+							
+						</tr>
+						<tr class="b">
+							<td>base</td>
+							<td id="filesBase">1988</td>
+							<td id="totalBase">8</td>
+							
+								<td id="warningSeverityNumBase">8</td>
+							
+						</tr>
+						<tr class="a">
+							<td>patch</td>
+							<td id="filesPatch">1988</td>
+							<td id="totalPatch">8 (8 removed, 8 added)</td>
+							
+								<td id="warningSeverityStatisticsPatch">8 (8 removed, 8 added)</td>
+							
+						</tr>
+						<tr class="d">
+							<td/>
+							<td id="filesDiff">8 files with differences</td>
+							<td id="totalDiff">16 changes in violations</td>
+							
+								<td id="warningSeverityNumDiff">16 changes in violations</td>
+							
+						<tr>
+					</table>
+
+					
+						<br />
+						<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Report id</th>
+								
+									<th>com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheck</th>
+								
+							</tr>
+							<tr class="b">
+								<td>base</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheckModuleNumBase">8</td>
+								
+							</tr>
+							<tr class="a">
+								<td>patch</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheckModuleStatisticsPatch">8 (8 removed, 8 added)</td>
+								
+							</tr>
+							<tr class="d">
+								<td>changes in violations</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheckModuleNumDiff">16</td>
+								
+							<tr>
+						</table>
+					
+
+					<br />
+					Number of unique base messages reported below: <span id="uniqueMessagesBase">8</span><br />
+					Number of unique patch messages reported below: <span id="uniqueMessagesPatch">8</span><br />
+				</div>
+			</div>
+
+			<div class="section">
+				<h2 a="Violations:">Violations:</h2>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\.mvn\wrapper\MavenWrapperDownloader.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A1" href = "#A1">#A1</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\.mvn\wrapper\MavenWrapperDownloader.java.html#L48">48</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A2" href = "#A2">#A2</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\.mvn\wrapper\MavenWrapperDownloader.java.html#L48">48</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\apps\showcase\src\main\java\org\apache\struts2\showcase\hangman\Vocab.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A3" href = "#A3">#A3</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\apps\showcase\src\main\java\org\apache\struts2\showcase\hangman\Vocab.java.html#L75">75</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A4" href = "#A4">#A4</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\apps\showcase\src\main\java\org\apache\struts2\showcase\hangman\Vocab.java.html#L75">75</a></td>
+								
+								
+									
+									<td class="keepWidth">9</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\embeddedjsp\src\main\java\org\apache\struts2\jasper\JspC.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A5" href = "#A5">#A5</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\embeddedjsp\src\main\java\org\apache\struts2\jasper\JspC.java.html#L228">228</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A6" href = "#A6">#A6</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\embeddedjsp\src\main\java\org\apache\struts2\jasper\JspC.java.html#L228">228</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\embeddedjsp\src\main\java\org\apache\struts2\jasper\compiler\SmapGenerator.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A7" href = "#A7">#A7</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\embeddedjsp\src\main\java\org\apache\struts2\jasper\compiler\SmapGenerator.java.html#L148">148</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A8" href = "#A8">#A8</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\embeddedjsp\src\main\java\org\apache\struts2\jasper\compiler\SmapGenerator.java.html#L148">148</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\embeddedjsp\src\main\java\org\apache\struts2\jasper\compiler\SmapUtil.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A9" href = "#A9">#A9</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\embeddedjsp\src\main\java\org\apache\struts2\jasper\compiler\SmapUtil.java.html#L200">200</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A10" href = "#A10">#A10</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\embeddedjsp\src\main\java\org\apache\struts2\jasper\compiler\SmapUtil.java.html#L200">200</a></td>
+								
+								
+									
+									<td class="keepWidth">9</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\jasperreports\src\main\java\org\apache\struts2\views\jasperreports\CompileReport.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A11" href = "#A11">#A11</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\jasperreports\src\main\java\org\apache\struts2\views\jasperreports\CompileReport.java.html#L30">30</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A12" href = "#A12">#A12</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\jasperreports\src\main\java\org\apache\struts2\views\jasperreports\CompileReport.java.html#L30">30</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\portlet\src\test\java\org\apache\struts2\portlet\result\PortletResultTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A13" href = "#A13">#A13</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\portlet\src\test\java\org\apache\struts2\portlet\result\PortletResultTest.java.html#L258">258</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A14" href = "#A14">#A14</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\portlet\src\test\java\org\apache\struts2\portlet\result\PortletResultTest.java.html#L258">258</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\portlet\src\test\java\org\apache\struts2\views\jsp\PortletUrlTagTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A15" href = "#A15">#A15</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\portlet\src\test\java\org\apache\struts2\views\jsp\PortletUrlTagTest.java.html#L78">78</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A16" href = "#A16">#A16</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\apache-struts\plugins\portlet\src\test\java\org\apache\struts2\views\jsp\PortletUrlTagTest.java.html#L78">78</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

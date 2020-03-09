@@ -1,0 +1,899 @@
+<html>
+	<head>
+		<title>checkstyle xml difference report</title>
+		<style type="text/css" media="all">@import url("./css/maven-base.css");@import url("./css/maven-theme.css"); );</style>
+		<link rel="stylesheet" href="./css/site.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<http-equiv http-equiv="Content-Language" content="en"></http-equiv>
+	</head>
+	<body class="composite">
+		<div id="contentBox">
+			<div class="section">
+				<h2 a="Checkstyle XML difference report">Checkstyle XML difference report</h2>
+				This is symmetric difference generated from two checkstyle-result.xml reports. <br/>
+				All matching records from each XML file are deleted, then remaining records are merged into single report. <br>
+		        <a href="https://github.com/checkstyle/contribution/tree/master/patch-diff-report-tool">Utility that generated this report.</a>
+			</div>
+
+			
+				<h2 a="Checkstyle configuration report">Checkstyle configuration report</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Module Name</th>
+								<th>Base properties</th>
+								<th>Patch properties</th>
+							</tr>
+							
+								
+									<tr>
+										<td class="c">Checker</td>
+										
+										<td class="c">
+											
+												severity
+												
+													<li>warning</li>
+												
+												<br/>
+											
+												charset
+												
+													<li>UTF-8</li>
+												
+												<br/>
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												severity
+												
+													<li>warning</li>
+												
+												<br/>
+											
+												charset
+												
+													<li>UTF-8</li>
+												
+												<br/>
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">BeforeExecutionExclusionFileFilter</td>
+										
+										<td class="c">
+											
+												fileNamePattern
+												
+													<li>module\-info\.java$</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												fileNamePattern
+												
+													<li>module\-info\.java$</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+										
+									<tr>
+										<td class="c">TreeWalker</td>
+										
+										<td class="c">
+											
+										</td>
+										
+										
+										<td class="c">
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">UncommentedMain</td>
+										
+										<td class="c">
+											
+										</td>
+										
+										
+										<td class="c">
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+								
+									
+								
+								
+					</table>	
+				</div>
+			
+
+			<div class="section">
+				<h2 a="Summary:">Summary:</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+						<tr class="a">
+							<th>Report id</th>
+							<th>Files</th>
+							<th>Violations</th>
+							
+								<th>Severity-warning</th>
+							
+						</tr>
+						<tr class="b">
+							<td>base</td>
+							<td id="filesBase">752</td>
+							<td id="totalBase">14</td>
+							
+								<td id="warningSeverityNumBase">14</td>
+							
+						</tr>
+						<tr class="a">
+							<td>patch</td>
+							<td id="filesPatch">752</td>
+							<td id="totalPatch">14 (14 removed, 14 added)</td>
+							
+								<td id="warningSeverityStatisticsPatch">14 (14 removed, 14 added)</td>
+							
+						</tr>
+						<tr class="d">
+							<td/>
+							<td id="filesDiff">14 files with differences</td>
+							<td id="totalDiff">28 changes in violations</td>
+							
+								<td id="warningSeverityNumDiff">28 changes in violations</td>
+							
+						<tr>
+					</table>
+
+					
+						<br />
+						<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Report id</th>
+								
+									<th>com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheck</th>
+								
+							</tr>
+							<tr class="b">
+								<td>base</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheckModuleNumBase">14</td>
+								
+							</tr>
+							<tr class="a">
+								<td>patch</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheckModuleStatisticsPatch">14 (14 removed, 14 added)</td>
+								
+							</tr>
+							<tr class="d">
+								<td>changes in violations</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheckModuleNumDiff">28</td>
+								
+							<tr>
+						</table>
+					
+
+					<br />
+					Number of unique base messages reported below: <span id="uniqueMessagesBase">14</span><br />
+					Number of unique patch messages reported below: <span id="uniqueMessagesPatch">14</span><br />
+				</div>
+			</div>
+
+			<div class="section">
+				<h2 a="Violations:">Violations:</h2>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\common\PatientMatching.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A1" href = "#A1">#A1</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\common\PatientMatching.java.html#L497">497</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A2" href = "#A2">#A2</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\common\PatientMatching.java.html#L497">497</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\ejb\conf\AttributeFilter.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A3" href = "#A3">#A3</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\ejb\conf\AttributeFilter.java.html#L89">89</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A4" href = "#A4">#A4</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\ejb\conf\AttributeFilter.java.html#L89">89</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\tools\EditGpwl.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A5" href = "#A5">#A5</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\tools\EditGpwl.java.html#L82">82</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A6" href = "#A6">#A6</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\tools\EditGpwl.java.html#L82">82</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\tools\EditMwl.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A7" href = "#A7">#A7</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\tools\EditMwl.java.html#L86">86</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A8" href = "#A8">#A8</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\tools\EditMwl.java.html#L86">86</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\tools\Pwd2Hash.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A9" href = "#A9">#A9</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\tools\Pwd2Hash.java.html#L52">52</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A10" href = "#A10">#A10</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\src\java\org\dcm4chex\archive\tools\Pwd2Hash.java.html#L52">52</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\CodeBeanTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A11" href = "#A11">#A11</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\CodeBeanTest.java.html#L61">61</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A12" href = "#A12">#A12</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\CodeBeanTest.java.html#L61">61</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\FileBeanTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A13" href = "#A13">#A13</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\FileBeanTest.java.html#L71">71</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A14" href = "#A14">#A14</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\FileBeanTest.java.html#L71">71</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\InstanceBeanTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A15" href = "#A15">#A15</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\InstanceBeanTest.java.html#L80">80</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A16" href = "#A16">#A16</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\InstanceBeanTest.java.html#L80">80</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\PatientBeanTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A17" href = "#A17">#A17</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\PatientBeanTest.java.html#L71">71</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A18" href = "#A18">#A18</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\PatientBeanTest.java.html#L71">71</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\SeriesBeanTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A19" href = "#A19">#A19</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\SeriesBeanTest.java.html#L75">75</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A20" href = "#A20">#A20</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\SeriesBeanTest.java.html#L75">75</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\StudyBeanTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A21" href = "#A21">#A21</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\StudyBeanTest.java.html#L69">69</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A22" href = "#A22">#A22</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\entity\StudyBeanTest.java.html#L69">69</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\jdbc\QueryCmdTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A23" href = "#A23">#A23</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\jdbc\QueryCmdTest.java.html#L55">55</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A24" href = "#A24">#A24</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\jdbc\QueryCmdTest.java.html#L55">55</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\session\MWLManagerBeanTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A25" href = "#A25">#A25</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\session\MWLManagerBeanTest.java.html#L69">69</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A26" href = "#A26">#A26</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-ejb\test\java\org\dcm4chex\archive\ejb\session\MWLManagerBeanTest.java.html#L69">69</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>D:\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-sar\src\java\org\dcm4chex\archive\hsm\VerifyTar.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A27" href = "#A27">#A27</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-sar\src\java\org\dcm4chex\archive\hsm\VerifyTar.java.html#L161">161</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td class="keepWidth"><a name="A28" href = "#A28">#A28</a></td>
+								<td>warning</td>
+								<td>UncommentedMain</td>
+								<td>Uncommented main method found.</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\contribution\checkstyle-tester\repositories\nbia-dcm4che-tools\dcm4jboss-sar\src\java\org\dcm4chex\archive\hsm\VerifyTar.java.html#L161">161</a></td>
+								
+								
+									
+									<td class="keepWidth">5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
