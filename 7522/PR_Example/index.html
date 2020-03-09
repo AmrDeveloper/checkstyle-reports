@@ -1,0 +1,300 @@
+<html>
+	<head>
+		<title>checkstyle xml difference report</title>
+		<style type="text/css" media="all">@import url("./css/maven-base.css");@import url("./css/maven-theme.css"); );</style>
+		<link rel="stylesheet" href="./css/site.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<http-equiv http-equiv="Content-Language" content="en"></http-equiv>
+	</head>
+	<body class="composite">
+		<div id="contentBox">
+			<div class="section">
+				<h2 a="Checkstyle XML difference report">Checkstyle XML difference report</h2>
+				This is symmetric difference generated from two checkstyle-result.xml reports. <br/>
+				All matching records from each XML file are deleted, then remaining records are merged into single report. <br>
+		        <a href="https://github.com/checkstyle/contribution/tree/master/patch-diff-report-tool">Utility that generated this report.</a>
+			</div>
+
+			
+				<h2 a="Checkstyle configuration report">Checkstyle configuration report</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Module Name</th>
+								<th>Base properties</th>
+								<th>Patch properties</th>
+							</tr>
+							
+								
+									<tr>
+										<td class="c">Checker</td>
+										
+										<td class="c">
+											
+												severity
+												
+													<li>warning</li>
+												
+												<br/>
+											
+												charset
+												
+													<li>UTF-8</li>
+												
+												<br/>
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												severity
+												
+													<li>warning</li>
+												
+												<br/>
+											
+												charset
+												
+													<li>UTF-8</li>
+												
+												<br/>
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">BeforeExecutionExclusionFileFilter</td>
+										
+										<td class="c">
+											
+												fileNamePattern
+												
+													<li>module\-info\.java$</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												fileNamePattern
+												
+													<li>module\-info\.java$</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+										
+									<tr>
+										<td class="c">TreeWalker</td>
+										
+										<td class="c">
+											
+										</td>
+										
+										
+										<td class="c">
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">SuppressWarningsHolder</td>
+										
+										<td class="c">
+											
+										</td>
+										
+										
+										<td class="c">
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+								
+									
+								
+								
+					</table>	
+				</div>
+			
+
+			<div class="section">
+				<h2 a="Summary:">Summary:</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+						<tr class="a">
+							<th>Report id</th>
+							<th>Files</th>
+							<th>Violations</th>
+							
+								<th>Severity-error</th>
+							
+						</tr>
+						<tr class="b">
+							<td>base</td>
+							<td id="filesBase">1</td>
+							<td id="totalBase">1</td>
+							
+								<td id="errorSeverityNumBase">1</td>
+							
+						</tr>
+						<tr class="a">
+							<td>patch</td>
+							<td id="filesPatch">1</td>
+							<td id="totalPatch">0 (1 removed)</td>
+							
+								<td id="errorSeverityStatisticsPatch">0 (1 removed)</td>
+							
+						</tr>
+						<tr class="d">
+							<td/>
+							<td id="filesDiff">1 file with differences</td>
+							<td id="totalDiff">1 change in violations</td>
+							
+								<td id="errorSeverityNumDiff">1 change in violations</td>
+							
+						<tr>
+					</table>
+
+					
+						<br />
+						<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Report id</th>
+								
+									<th>com.puppycrawl.tools.checkstyle.Checker</th>
+								
+							</tr>
+							<tr class="b">
+								<td>base</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.CheckerModuleNumBase">1</td>
+								
+							</tr>
+							<tr class="a">
+								<td>patch</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.CheckerModuleStatisticsPatch">0 (1 removed)</td>
+								
+							</tr>
+							<tr class="d">
+								<td>changes in violations</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.CheckerModuleNumDiff">1</td>
+								
+							<tr>
+						</table>
+					
+
+					<br />
+					Number of unique base messages reported below: <span id="uniqueMessagesBase">1</span><br />
+					Number of unique patch messages reported below: <span id="uniqueMessagesPatch">0</span><br />
+				</div>
+			</div>
+
+			<div class="section">
+				<h2 a="Violations:">Violations:</h2>
+				<div class="section">
+					<h3>D:\OpenSource\PR_Example\InputSuppressWarningsHolder7.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="b">
+								
+								<td class="keepWidth"><a name="A1" href = "#A1">#A1</a></td>
+								<td>error</td>
+								<td>Checker</td>
+								<td>Got an exception - java.lang.IllegalArgumentException: Unexpected container AST: ANNOTATION[8x4]<br />
+#x9;at com.puppycrawl.tools.checkstyle.checks.SuppressWarningsHolder.getAnnotationTarget(SuppressWarningsHolder.java:406)<br />
+#x9;at com.puppycrawl.tools.checkstyle.checks.SuppressWarningsHolder.visitToken(SuppressWarningsHolder.java:296)<br />
+#x9;at com.puppycrawl.tools.checkstyle.TreeWalker.notifyVisit(TreeWalker.java:342)<br />
+#x9;at com.puppycrawl.tools.checkstyle.TreeWalker.processIter(TreeWalker.java:449)<br />
+#x9;at com.puppycrawl.tools.checkstyle.TreeWalker.walk(TreeWalker.java:283)<br />
+#x9;at com.puppycrawl.tools.checkstyle.TreeWalker.processFiltered(TreeWalker.java:161)<br />
+#x9;at com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck.process(AbstractFileSetCheck.java:85)<br />
+#x9;at com.puppycrawl.tools.checkstyle.Checker.processFile(Checker.java:329)<br />
+#x9;at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:291)<br />
+#x9;at com.puppycrawl.tools.checkstyle.Checker.process(Checker.java:216)<br />
+#x9;at org.apache.maven.plugins.checkstyle.exec.DefaultCheckstyleExecutor.executeCheckstyle(DefaultCheckstyleExecutor.java:247)<br />
+#x9;at org.apache.maven.plugins.checkstyle.AbstractCheckstyleReport.executeReport(AbstractCheckstyleReport.java:533)<br />
+#x9;at org.apache.maven.plugins.checkstyle.CheckstyleReport.executeReport(CheckstyleReport.java:57)<br />
+#x9;at org.apache.maven.reporting.AbstractMavenReport.generate(AbstractMavenReport.java:255)<br />
+#x9;at org.apache.maven.plugins.site.ReportDocumentRenderer.renderDocument(ReportDocumentRenderer.java:219)<br />
+#x9;at org.apache.maven.doxia.siterenderer.DefaultSiteRenderer.renderModule(DefaultSiteRenderer.java:319)<br />
+#x9;at org.apache.maven.doxia.siterenderer.DefaultSiteRenderer.render(DefaultSiteRenderer.java:135)<br />
+#x9;at org.apache.maven.plugins.site.SiteMojo.renderLocale(SiteMojo.java:175)<br />
+#x9;at org.apache.maven.plugins.site.SiteMojo.execute(SiteMojo.java:138)<br />
+#x9;at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:137)<br />
+#x9;at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:210)<br />
+#x9;at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:156)<br />
+#x9;at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:148)<br />
+#x9;at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:117)<br />
+#x9;at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:81)<br />
+#x9;at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:56)<br />
+#x9;at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)<br />
+#x9;at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:305)<br />
+#x9;at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:192)<br />
+#x9;at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:105)<br />
+#x9;at org.apache.maven.cli.MavenCli.execute(MavenCli.java:957)<br />
+#x9;at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:289)<br />
+#x9;at org.apache.maven.cli.MavenCli.main(MavenCli.java:193)<br />
+#x9;at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+#x9;at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br />
+#x9;at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
+#x9;at java.lang.reflect.Method.invoke(Method.java:498)<br />
+#x9;at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:282)<br />
+#x9;at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:225)<br />
+#x9;at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:406)<br />
+#x9;at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:347)<br />
+</td>
+								
+									
+									<td class="keepWidth"><a href = "xref\OpenSource\PR_Example\InputSuppressWarningsHolder7.java.html#L1">1</a></td>
+								
+								
+									<td class="keepWidth"> </td>
+									
+								
+							</tr>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
